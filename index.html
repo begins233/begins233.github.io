@@ -35820,13 +35820,13 @@ div#notebook {
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<h1 id='Brian-2-&#65306;Synapses&#31361;&#35302;-for-python3'>Brian 2 &#65306;Synapses&#31361;&#35302; for python3</h1>
+<h1 id='Brian-2-&#65306;Synapses-for-python3'>Brian 2 &#65306;Synapses for python3</h1>
 </div>
 </div>
 </div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[1]:</div>
+<div class='prompt input_prompt'>In&nbsp;[2]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>from</span> <span class='nn'>brian2</span> <span class='k'>import</span> <span class='o'>*</span>
@@ -43025,7 +43025,8 @@ RCRiSshEREREIqaETERERCRi/x/xTpw3dahmAwAAAABJRU5ErkJggg==
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<p>下面的例子，增加了神经元的空间状态</p>
+<p>下面的例子，增加了神经元的空间状态
+从图一可神经元距离越接近时，神经元的尺寸越大</p>
 
 </div>
 </div>
@@ -45128,7 +45129,8 @@ hSUgY4wxrrAEZIwxxhWWgIwxxrji/wPiENr+cfSJcAAAAABJRU5ErkJggg==
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<p>直接采用以上的方程来进行模拟是非常低效的，因为需要计算所有的脉冲时间，这在生理上也是不切逻辑的，因为神经元不能记住它之前的所有脉冲尖峰时间。事实证明有一种更加有效的办法。</p>
+<p>由上图可以看出的有 如果当一个突触前的神经元发出脉冲后突触后的神经元也产生了脉冲，如果两者时间越接近这赋予的权重越高，如果是突触后先产生的脉冲则权重为负，抑制其传导
+直接采用以上的方程来进行模拟是非常低效的，因为需要计算所有的脉冲时间，这在生理上也是不切逻辑的，因为神经元不能记住它之前的所有脉冲尖峰时间。事实证明有一种更加有效的办法。</p>
 <p>我们通过下面的微分方程定义两个新的变量$a_{pre}$和$a_{post}$用来表示突触前和突触后的“traces”活跃度，
 \begin{align}
 \tau_{pre}\frac{\mathrm{d}}{\mathrm{d}t} a_{pre} &amp;= -a_{pre}\\
@@ -45187,7 +45189,7 @@ w &amp;\rightarrow w+a_{pre}
 </div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[3]:</div>
+<div class='prompt input_prompt'>In&nbsp;[6]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span></span><span class='n'>start_scope</span><span class='p'>()</span>
