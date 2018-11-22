@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spiking Neural Network 学习1生物原理学习神经元膜的特效：**神经的电活动的本质是带电离子在电场中移动**.神经元膜(membrane)上的跨膜电流由三个要素组成：  神经元膜内外的盐溶液：提供带电离子  神经元膜： 将内外隔开形成电场  跨膜蛋白质：离子在膜内外电场移动的通道 神经元膜的组成—鳞脂 鳞脂含亲水的极性(‘头’)，也含疏水的非极性(尾) 神经元膜由尾尾相对的双层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SNN相关理论知识学习">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/SNN相关理论知识学习/index.html">
+<meta property="og:site_name" content="grabAspoon">
+<meta property="og:description" content="Spiking Neural Network 学习1生物原理学习神经元膜的特效：**神经的电活动的本质是带电离子在电场中移动**.神经元膜(membrane)上的跨膜电流由三个要素组成：  神经元膜内外的盐溶液：提供带电离子  神经元膜： 将内外隔开形成电场  跨膜蛋白质：离子在膜内外电场移动的通道 神经元膜的组成—鳞脂 鳞脂含亲水的极性(‘头’)，也含疏水的非极性(尾) 神经元膜由尾尾相对的双层">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_001.png">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_002.png">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_003.png">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_004.png">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_011.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/7/78/Apshoot.jpg">
+<meta property="og:image" content="http://yoursite.com/home/begins/图片/选区_012.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-a0f471d577a5bf6a15d02301c377a2be_hd.jpg">
+<meta property="og:image" content="https://img-blog.csdn.net/20170311181622516?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTg1MzQ3OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-11-22T07:48:04.579Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SNN相关理论知识学习">
+<meta name="twitter:description" content="Spiking Neural Network 学习1生物原理学习神经元膜的特效：**神经的电活动的本质是带电离子在电场中移动**.神经元膜(membrane)上的跨膜电流由三个要素组成：  神经元膜内外的盐溶液：提供带电离子  神经元膜： 将内外隔开形成电场  跨膜蛋白质：离子在膜内外电场移动的通道 神经元膜的组成—鳞脂 鳞脂含亲水的极性(‘头’)，也含疏水的非极性(尾) 神经元膜由尾尾相对的双层">
+<meta name="twitter:image" content="http://yoursite.com/home/begins/图片/选区_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/22/SNN相关理论知识学习/">
+
+
+
+
+
+  <title>SNN相关理论知识学习 | grabAspoon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">grabAspoon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Welcome to the real world!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/SNN相关理论知识学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="begins">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="grabAspoon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SNN相关理论知识学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T15:11:25+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spiking-Neural-Network-学习"><a href="#Spiking-Neural-Network-学习" class="headerlink" title="Spiking Neural Network 学习"></a>Spiking Neural Network 学习</h1><h3 id="1生物原理学习"><a href="#1生物原理学习" class="headerlink" title="1生物原理学习"></a>1生物原理学习</h3><pre><code>神经元膜的特效：**神经的电活动的本质是带电离子在电场中移动**.神经元膜(membrane)上的跨膜电流由三个要素组成：
+</code></pre><ol>
+<li><p>神经元<strong>膜内外</strong>的盐溶液：提供带电离子</p>
+</li>
+<li><p>神经元膜： 将内外隔开形成电场</p>
+</li>
+<li><p>跨膜蛋白质：离子在膜内外电场移动的通道</p>
+<p><strong>神经元膜的组成—鳞脂</strong></p>
+<p>鳞脂含亲水的极性(‘头’)，也含疏水的非极性(尾)</p>
+<p><strong>神经元膜由尾尾相对的双层鳞脂组成</strong>,将细胞质和细胞外液分割开来。</p>
+<p><img src="/home/begins/图片/选区_001.png" alt="20180410145104436"></p>
+</li>
+</ol>
+<p>神经元膜上的蛋白质能形成像通道一样的形状(蛋白通道)，以让特定的离子通过，主要有以下两种类型。</p>
+<ol>
+<li><p>离子通道(ion channel):打开时，只允许特定的离子通过，如钾通道，钠通道等等，<strong>打开时让离子从<em>高溶度</em>流向<em>低浓度</em>,不需要能量</strong></p>
+</li>
+<li><p>离子泵(ion pump):不仅允许离子通过，而且还能够给像泵一样将离子<strong>从<em>低浓度</em>向<em>高浓度</em>转运,需要消耗能量(分解能量货币ATP)</strong></p>
+<p><img src="/home/begins/图片/选区_002.png" alt="选区_002"></p>
+</li>
+</ol>
+<p><strong>离子通过离子通道进行跨膜运动</strong>受两个因素影响：<strong>扩散</strong>和<strong>电场作用</strong></p>
+<ol>
+<li><p>扩散(diffusion): 从浓度高向浓度低区域的净移动</p>
+<p>离子跨膜扩散有两个条件： </p>
+<ul>
+<li>膜两侧有浓度差(高—低）</li>
+<li>离子通道打开</li>
+</ul>
+</li>
+<li><p>电场作用：离子在电场作用下发生净运动。</p>
+<p>与两个因素有关：<strong>电位、电导。离子通道开放时，电导增加，若通道关闭则电导为0.</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>膜两侧要有电位差</p>
+</li>
+<li><p>离子通道打开</p>
+<h4 id="膜电位"><a href="#膜电位" class="headerlink" title="膜电位"></a>膜电位<img src="/home/begins/图片/选区_003.png" alt="选区_003"></h4></li>
+</ul>
+<h4 id="静息电位"><a href="#静息电位" class="headerlink" title="静息电位 "></a>静息电位 <img src="/home/begins/图片/选区_004.png" alt="选区_004"></h4><h4 id="动作电位"><a href="#动作电位" class="headerlink" title="动作电位"></a>动作电位</h4><p><img src="/home/begins/图片/选区_011.png" alt="选区_011"></p>
+<p><strong>动作电位的膜电位变化图</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Apshoot.jpg" alt="img"></p>
+<hr>
+<h2 id="HH模型"><a href="#HH模型" class="headerlink" title="HH模型"></a>HH模型</h2><p><strong>HH模型时一组描述神经元细胞膜的电生理现象的非线性微分方程，反映了细胞膜上离子通道的开闭情况</strong></p>
+<p>​    HH模型所对应的电路图如下所示，其中 C 代表脂质双层(lipid bilayer) 的电容；RNa, RK, Rl分别代表钠离子通道、 钾离子通道与漏电通道的电阻（RNa, RK 上的斜箭头表明其为随时间变化的变量， 而 R l 则为一个常数）； E l, E Na, E K 分别代表由于膜内外电离子浓度差别所导致的漏电平衡电压、钠离子平衡电压、钾离子平衡电压；膜电压V代表神经膜内外的电压差，可以通过HH模型的仿真来得到V随时间变化的曲线</p>
+<p><img src="/home/begins/图片/选区_012.png" alt="选区_012"><img src="https://pic1.zhimg.com/80/v2-a0f471d577a5bf6a15d02301c377a2be_hd.jpg" alt="img"></p>
+<p><strong>神经元的膜电压变化如下</strong></p>
+<p><img src="https://img-blog.csdn.net/20170311181622516?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTg1MzQ3OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="å¾1-2"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/19/Brian2-Simulations/" rel="next" title="Brian2-Simulations">
+                <i class="fa fa-chevron-left"></i> Brian2-Simulations
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">begins</p>
+              <p class="site-description motion-element" itemprop="description">What's with you? I just grabbed a spoon.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spiking-Neural-Network-学习"><span class="nav-number">1.</span> <span class="nav-text">Spiking Neural Network 学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1生物原理学习"><span class="nav-number">1.0.1.</span> <span class="nav-text">1生物原理学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#膜电位"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">膜电位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静息电位"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">静息电位 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动作电位"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">动作电位</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HH模型"><span class="nav-number">1.1.</span> <span class="nav-text">HH模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">begins</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
