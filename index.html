@@ -232,6 +232,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/最近/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="begins">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="grabAspoon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/最近/" itemprop="url">最近</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:21:24+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在准备写毕业的小论文，进行学术注水吧，另外在准备对之前看到视频进行一下资料的整理和翻译，放在了github上 <a href="https://github.com/begins233/EPFL_NeuronalDynamicsLearning" target="_blank" rel="noopener">地址</a> 。最近的状态没有很好希望能够调整过来</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/brian2-Mnist-code/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -82963,156 +83083,13 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/将jupyter-notebook上传到hexo/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="begins">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="grabAspoon">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/将jupyter-notebook上传到hexo/" itemprop="url">将jupyter notebook上传到hexo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T19:28:25+08:00">
-                2018-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>通过安装插件实现，按照官网的步骤如下：</p>
-<p>第一步：</p>
-<p>在hexo的安装目录运行<code>npm install hexo-jupyter-notebook --save</code></p>
-<p>我使用的是nvm进行管理的 需要先进行npm的激活采用     <code>nvm use v版本号</code></p>
-<p>第二步：</p>
-<p>安装pandoc: <code>sudo apt-get install pandoc</code></p>
-<p>安装nbconvert: <code>pip install nbconvert</code></p>
-<p>第三步：</p>
-<ul>
-<li><p>打开hexo的配置文件 _config.yml， 把里面的<code>post_asset_folder: true</code>改为true</p>
-</li>
-<li><p>在<code>_post</code>目录下新建专门用于存放<code>.ipynb</code>文件的目录:<code>mkdir jupyter-demo</code></p>
-</li>
-<li><p>将需要展示的文件存放到<code>jupyter-demo</code>目录下</p>
-</li>
-<li><p>在需要展示的地方写入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src="http://code.jquery.com/jquery-2.0.0.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% asset_jupyter 使用的python路径 ../jupyter-demo/xxxx.ipynb %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上就可以在hexo博客中显示jupyter notebook里的内容。</p>
-<p>在安装完后 我遇到了提示没有 c的错误</p>
-<p>通过`sudo npm install 解决</p>
-<hr>
-<p>最后：</p>
-<p>可以通过修改文件内容到达修改jupyter notebook的显示高度，修改方式如下：</p>
-<p>在hexo的node_modules里面找到hexo-jupyter-notebook下面的main.py文件中，找到如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe id=&apos;ipynb&apos; marginheight=&quot;0&quot; frameborder=&quot;0&quot; width=&apos;924px&apos; height=&apos;680px&apos; srcdoc=&quot;%s&quot; style=&quot;scrolling:no;&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-<p>需要自己添加<code>height=&#39;xxxpx&#39;</code> .虽然前面采用了<code>jQuery</code>文件来进行自适应高度，但是默认显示高度有点不够看。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -83156,7 +83133,7 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
