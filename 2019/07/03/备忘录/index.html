@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="code,">
+  <meta name="keywords" content="机器学习,">
 
 
 
@@ -79,15 +79,15 @@
 
 
 
-<meta name="keywords" content="code">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="brian2_Mnist_code">
-<meta property="og:url" content="http://yoursite.com/2018/11/27/brian2-Mnist-code/index.html">
+<meta property="og:title" content="备忘录">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/备忘录/index.html">
 <meta property="og:site_name" content="grabAspoon">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T11:11:24.482Z">
+<meta property="og:updated_time" content="2019-07-03T14:08:34.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="brian2_Mnist_code">
+<meta name="twitter:title" content="备忘录">
 
 
 
@@ -117,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/27/brian2-Mnist-code/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/03/备忘录/">
 
 
 
 
 
-  <title>brian2_Mnist_code | grabAspoon</title>
+  <title>备忘录 | grabAspoon</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/brian2-Mnist-code/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/备忘录/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="begins">
@@ -247,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">brian2_Mnist_code</h1>
+          <h1 class="post-title" itemprop="name headline">备忘录</h1>
         
 
         <div class="post-meta">
@@ -259,8 +259,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T19:09:06+08:00">
-                2018-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T22:03:29+08:00">
+                2019-07-03
               </time>
             
 
@@ -306,7 +306,7 @@
 <iframe id="ipynb" marginheight="0" frameborder="0" width="924px" height="1800px" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
-<title>Brian2_MNIST</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
+<title>memorandum</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
 
 <style type='text/css'>
@@ -12076,290 +12076,82 @@ div#notebook {
   <div tabindex='-1' id='notebook' class='border-box-sizing'>
     <div class='container' id='notebook-container'>
 
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h1 id='&#22791;&#24536;&#24405;'>&#22791;&#24536;&#24405;</h1><ol>
+<li>激活函数</li>
+<li>常用层</li>
+<li>kernel</li>
+<li>过拟合与欠拟合常用方法</li>
+<li>层参数</li>
+<li>训练技巧</li>
+<li>经典网络结构</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h2 id='&#20851;&#20110;&#20132;&#21449;&#29109;&#19982;&#26368;&#22823;&#37322;&#28982;&#20272;&#35745;'>&#20851;&#20110;&#20132;&#21449;&#29109;&#19982;&#26368;&#22823;&#37322;&#28982;&#20272;&#35745;</h2>
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p>对于一个简单的分类问题 可以用线性回归或者是逻辑回归进行解决，其中就可以推到出最大释然估计，而交叉熵是在对于从信息学角度，从熵出推导得出，首先定义一个二元线性回归模型：$\hat{y} = \theta_1 x_1 + \theta_2 x_2 + bias$,  其中$\hat{y}$的取值范围在$[-\infty,+\infty ]$。$\hat{y}表示的预测值$</p>
+<p><strong><strong> $probability$和$odds$的定义</strong></strong></p>
+<ol>
+<li>$probability$指的是<strong>发生的次数</strong>/<strong>总次数</strong>, 如果抛硬币:<br>
+$$p = \frac{正面向上的次数}{总次数}$$  p的取值范围为$[0, 1]$</li>
+<li>$odds$则是一种比率, 指的是<strong>发生的次数</strong>/<strong>没有发生的次数</strong>:<br>
+$$odds = \frac{正面向上次数}{反面向上次数}$$  odds的取值范围为$[0, +\infty)$   </li>
+<li>回顾<strong>伯努利分布</strong>: 如果$X$是<strong>伯努利分布</strong>中的随机变量, $X$的取值为$\{0,1\}$, 非$0$即$1$, 如抛硬币的正反面:<br>
+则:  $P(X=1)=p \quad P(X=0)=1-p$<br>
+代入$odds$:  $$odds={{p}\over{1-p}} \quad odds\in[0, +\infty)$$
+将线性回归模型来表示$logit(p)$如下</li>
+</ol>
+<p>由$logit(p) = \theta_1 x_1 + \theta_2 x_2 + bias$得出$log(\frac{p}{1-p})=\theta_1 x_1 + \theta_2 x_2 + bias$,<br>
+设$\theta_1 x_1 + \theta_2 x_2 + bias=z$, 得出:<br>
+$log(\frac{p}{1-p})=z$, 等式两边取$e$:<br>
+$$\frac{p}{1-p}=e^z$$
+$$p=e^z(1-p)=e^z-e^zp$$
+$$p(1+e^z)=e^z$$
+$$p=\frac{e^z}{1+e^z}$$
+分子分母同除$e^z$, 得出:
+$$p=\frac{1}{1+e^{-z}} \quad p \in (0,1)$$
+由上面推导, 我们得出了$sigmoid$函数, 终于可以把<strong>线性回归模型</strong>输出的的实数空间取值映射成为概率了.<br>
+$$sigmoid(z)=\frac{1}{1+e^{-z}} \quad sigmoid(z) \in (0,1)$$
+我们来画一下$sigmoid$函数, 注意$sigmoid(z)$的取值范围:</p>
+
+</div>
+</div>
+</div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[113]:</div>
+<div class='prompt input_prompt'>In&nbsp;[1]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>import</span> <span class='nn'>matplotlib.cm</span> <span class='k'>as</span> <span class='nn'>cmap</span>
-<span class='kn'>import</span> <span class='nn'>time</span>
-<span class='kn'>import</span> <span class='nn'>os.path</span>
-<span class='kn'>import</span> <span class='nn'>scipy</span>
-<span class='kn'>import</span> <span class='nn'>pickle</span>
-<span class='c1'>#import brian no units</span>
-<span class='kn'>import</span> <span class='nn'>brian2</span> <span class='k'>as</span> <span class='nn'>b</span>
-<span class='kn'>from</span> <span class='nn'>struct</span> <span class='k'>import</span> <span class='n'>unpack</span><span class='p'>,</span><span class='n'>pack</span>
-<span class='kn'>from</span> <span class='nn'>brian2</span> <span class='k'>import</span> <span class='o'>*</span>
+<div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>import</span> <span class='nn'>matplotlib.pyplot</span> <span class='k'>as</span> <span class='nn'>plt</span>
 <span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='nn'>np</span>
-<span class='kn'>import</span> <span class='nn'>sys</span>
-<span class='n'>sys</span><span class='o'>.</span><span class='n'>getdefaultencoding</span><span class='p'>()</span>
-</pre></div>
 
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[113]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>&#39;utf-8&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[13]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#参数赋值</span>
-<span class='n'>ending</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;</span>
-<span class='n'>n_input</span> <span class='o'>=</span> <span class='mi'>784</span>
-<span class='n'>n_e</span> <span class='o'>=</span> <span class='mi'>400</span>
-<span class='n'>n_i</span> <span class='o'>=</span> <span class='n'>n_e</span> 
-<span class='n'>num_examples</span> <span class='o'>=</span> <span class='mi'>10000</span>
-<span class='n'>single_example_time</span> <span class='o'>=</span>   <span class='mf'>0.35</span> <span class='o'>*</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>second</span> <span class='c1'>#</span>
-<span class='n'>resting_time</span> <span class='o'>=</span> <span class='mf'>0.15</span> <span class='o'>*</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>second</span>
-<span class='n'>runtime</span> <span class='o'>=</span> <span class='n'>num_examples</span> <span class='o'>*</span> <span class='p'>(</span><span class='n'>single_example_time</span> <span class='o'>+</span> <span class='n'>resting_time</span><span class='p'>)</span>
-<span class='n'>conn_structure</span> <span class='o'>=</span> <span class='s1'>&#39;dense&#39;</span>
-<span class='n'>weight</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>delay</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>input_population_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;X&#39;</span><span class='p'>]</span>
-<span class='n'>population_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;A&#39;</span><span class='p'>]</span>
-<span class='n'>input_connection_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;XA&#39;</span><span class='p'>]</span>
-<span class='n'>save_conns</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;XeAe&#39;</span><span class='p'>]</span>
-<span class='n'>input_conn_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> 
-<span class='n'>recurrent_conn_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;ei&#39;</span><span class='p'>,</span> <span class='s1'>&#39;ie&#39;</span><span class='p'>]</span>
-<span class='n'>weight</span><span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='mf'>78.</span>
-<span class='n'>delay</span><span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>0</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span><span class='p'>,</span><span class='mi'>10</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span><span class='p'>)</span>
-<span class='n'>delay</span><span class='p'>[</span><span class='s1'>&#39;ei_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>0</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span><span class='p'>,</span><span class='mi'>5</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span><span class='p'>)</span>
-<span class='n'>input_intensity</span> <span class='o'>=</span> <span class='mf'>2.</span>
-<span class='n'>start_input_intensity</span> <span class='o'>=</span> <span class='n'>input_intensity</span>
-
-<span class='n'>tc_pre_ee</span> <span class='o'>=</span> <span class='mi'>20</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span>
-<span class='n'>tc_post_1_ee</span> <span class='o'>=</span> <span class='mi'>20</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span>
-<span class='n'>tc_post_2_ee</span> <span class='o'>=</span> <span class='mi'>40</span><span class='o'>*</span><span class='n'>b</span><span class='o'>.</span><span class='n'>ms</span>
-<span class='n'>nu_ee_pre</span> <span class='o'>=</span>  <span class='mf'>0.0001</span>      <span class='c1'># learning rate</span>
-<span class='n'>nu_ee_post</span> <span class='o'>=</span> <span class='mf'>0.01</span>       <span class='c1'># learning rate</span>
-<span class='n'>wmax_ee</span> <span class='o'>=</span> <span class='mf'>1.0</span>
-<span class='n'>exp_ee_pre</span> <span class='o'>=</span> <span class='mf'>0.2</span>
-<span class='n'>exp_ee_post</span> <span class='o'>=</span> <span class='n'>exp_ee_pre</span>
-<span class='n'>STDP_offset</span> <span class='o'>=</span> <span class='mf'>0.4</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[14]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>from</span> <span class='nn'>IPython.core.interactiveshell</span> <span class='k'>import</span> <span class='n'>InteractiveShell</span>
-<span class='n'>InteractiveShell</span><span class='o'>.</span><span class='n'>ast_node_interactivity</span> <span class='o'>=</span> <span class='s2'>&quot;all&quot;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[193]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>MNIST_data_path</span> <span class='o'>=</span>  <span class='s1'>&#39;/home/begins/learn/code/brian2_demo/lm-snn-master/data/&#39;</span>
-<span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;training&#39;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[193]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>&#39;/home/begins/learn/code/brian2_demo/lm-snn-master/data/training&#39;</pre>
-</div>
-
-</div>
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_text output_error'>
-<pre>
-<span class='ansi-red-fg'>---------------------------------------------------------------------------</span>
-<span class='ansi-red-fg'>NameError</span>                                 Traceback (most recent call last)
-<span class='ansi-green-fg'>&lt;ipython-input-193-bda66153a9b6&gt;</span> in <span class='ansi-cyan-fg'>&lt;module&gt;</span>
-<span class='ansi-green-intense-fg ansi-bold'>      1</span> MNIST_data_path <span class='ansi-blue-fg'>=</span>  <span class='ansi-blue-fg'>&#39;/home/begins/learn/code/brian2_demo/lm-snn-master/data/&#39;</span>
-<span class='ansi-green-intense-fg ansi-bold'>      2</span> MNIST_data_path <span class='ansi-blue-fg'>+</span> <span class='ansi-blue-fg'>&#39;training&#39;</span>
-<span class='ansi-green-fg'>----&gt; 3</span><span class='ansi-red-fg'> </span>home<span class='ansi-blue-fg'>/</span>begins<span class='ansi-blue-fg'>/</span>learn<span class='ansi-blue-fg'>/</span>code<span class='ansi-blue-fg'>/</span>brian2_demo<span class='ansi-blue-fg'>/</span>lm<span class='ansi-blue-fg'>-</span>snn<span class='ansi-blue-fg'>-</span>master<span class='ansi-blue-fg'>/</span>data<span class='ansi-blue-fg'>/</span>training<span class='ansi-blue-fg'>(</span><span class='ansi-blue-fg'>)</span>
-
-<span class='ansi-red-fg'>NameError</span>: name &#39;home&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[77]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>os</span><span class='o'>.</span><span class='n'>path</span><span class='o'>.</span><span class='n'>isfile</span><span class='p'>(</span><span class='s1'>&#39;</span><span class='si'>%s</span><span class='s1'>.pickle&#39;</span> <span class='o'>%</span><span class='p'>((</span><span class='n'>MNIST_data_path</span><span class='o'>+</span><span class='s1'>&#39;training&#39;</span><span class='p'>)))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[77]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[116]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#------------------------------------------------------------------------------     </span>
-<span class='k'>def</span> <span class='nf'>get_labeled_data</span><span class='p'>(</span><span class='n'>picklename</span><span class='p'>,</span> <span class='n'>bTrain</span> <span class='o'>=</span> <span class='kc'>True</span><span class='p'>):</span>
-    <span class='sd'>&quot;&quot;&quot;Read input-vector (image) and target class (label, 0-9) and return</span>
-<span class='sd'>       it as list of tuples.</span>
-<span class='sd'>    &quot;&quot;&quot;</span>
-    <span class='c1'>#print(type(picklename))</span>
-    <span class='k'>if</span> <span class='n'>os</span><span class='o'>.</span><span class='n'>path</span><span class='o'>.</span><span class='n'>isfile</span><span class='p'>(</span><span class='s1'>&#39;</span><span class='si'>%s</span><span class='s1'>.pickle&#39;</span> <span class='o'>%</span><span class='k'>bytes</span>.decode(picklename)):
-        <span class='n'>data</span> <span class='o'>=</span> <span class='n'>pickle</span><span class='o'>.</span><span class='n'>load</span><span class='p'>(</span><span class='nb'>open</span><span class='p'>(</span><span class='s1'>&#39;</span><span class='si'>%s</span><span class='s1'>.pickle&#39;</span> <span class='o'>%</span><span class='k'>bytes</span>.decode(picklename),&quot;rb&quot;),encoding=&#39;iso-8859-1&#39;)
-    <span class='k'>else</span><span class='p'>:</span>
-        <span class='c1'># Open the images with gzip in read binary mode</span>
-        <span class='k'>if</span> <span class='n'>bTrain</span><span class='p'>:</span>
-            <span class='n'>images</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;train-images-idx3-ubyte&#39;</span><span class='p'>,</span><span class='s1'>&#39;rb&#39;</span><span class='p'>)</span>
-            <span class='n'>labels</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;train-labels-idx1-ubyte&#39;</span><span class='p'>,</span><span class='s1'>&#39;rb&#39;</span><span class='p'>)</span>
-        <span class='k'>else</span><span class='p'>:</span>
-            <span class='n'>images</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;t10k-images-idx3-ubyte&#39;</span><span class='p'>,</span><span class='s1'>&#39;rb&#39;</span><span class='p'>)</span>
-            <span class='n'>labels</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;t10k-labels-idx1-ubyte&#39;</span><span class='p'>,</span><span class='s1'>&#39;rb&#39;</span><span class='p'>)</span>
-        <span class='c1'># Get metadata for images</span>
-        <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>)</span>  <span class='c1'># skip the magic_number</span>
-        <span class='n'>number_of_images</span> <span class='o'>=</span> <span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;I&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span>
-        <span class='n'>rows</span> <span class='o'>=</span> <span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;I&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span>
-        <span class='n'>cols</span> <span class='o'>=</span> <span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;I&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span>
-        <span class='c1'># Get metadata for labels</span>
-        <span class='n'>labels</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>)</span>  <span class='c1'># skip the magic_number</span>
-        <span class='n'>N</span> <span class='o'>=</span> <span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;I&#39;</span><span class='p'>,</span> <span class='n'>labels</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span>
-    
-        <span class='k'>if</span> <span class='n'>number_of_images</span> <span class='o'>!=</span> <span class='n'>N</span><span class='p'>:</span>
-            <span class='k'>raise</span> <span class='ne'>Exception</span><span class='p'>(</span><span class='s1'>&#39;number of labels did not match the number of images&#39;</span><span class='p'>)</span>
-        <span class='c1'># Get the data</span>
-        <span class='n'>x</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>N</span><span class='p'>,</span> <span class='n'>rows</span><span class='p'>,</span> <span class='n'>cols</span><span class='p'>),</span> <span class='n'>dtype</span><span class='o'>=</span><span class='n'>np</span><span class='o'>.</span><span class='n'>uint8</span><span class='p'>)</span>  <span class='c1'># Initialize numpy array</span>
-        <span class='n'>y</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>N</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>),</span> <span class='n'>dtype</span><span class='o'>=</span><span class='n'>np</span><span class='o'>.</span><span class='n'>uint8</span><span class='p'>)</span>  <span class='c1'># Initialize numpy array</span>
-        <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>N</span><span class='p'>):</span>
-            <span class='k'>if</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>1000</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>:</span>
-                <span class='nb'>print</span><span class='p'>(</span><span class='s2'>&quot;i: </span><span class='si'>%i</span><span class='s2'>&quot;</span> <span class='o'>%</span> <span class='n'>i</span><span class='p'>)</span>
-            <span class='n'>x</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='p'>[[</span><span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;B&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>unused_col</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>cols</span><span class='p'>)]</span>  <span class='k'>for</span> <span class='n'>unused_row</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>rows</span><span class='p'>)</span> <span class='p'>]</span>
-            <span class='n'>y</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;B&#39;</span><span class='p'>,</span> <span class='n'>labels</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span>
-            
-        <span class='n'>data</span> <span class='o'>=</span> <span class='p'>{</span><span class='s1'>&#39;x&#39;</span><span class='p'>:</span> <span class='n'>x</span><span class='p'>,</span> <span class='s1'>&#39;y&#39;</span><span class='p'>:</span> <span class='n'>y</span><span class='p'>,</span> <span class='s1'>&#39;rows&#39;</span><span class='p'>:</span> <span class='n'>rows</span><span class='p'>,</span> <span class='s1'>&#39;cols&#39;</span><span class='p'>:</span> <span class='n'>cols</span><span class='p'>}</span>
-        <span class='n'>pickle</span><span class='o'>.</span><span class='n'>dump</span><span class='p'>(</span><span class='n'>data</span><span class='p'>,</span> <span class='nb'>open</span><span class='p'>(</span><span class='s2'>&quot;</span><span class='si'>%s</span><span class='s2'>.pickle&quot;</span> <span class='o'>%</span><span class='k'>bytes</span>.decode(picklename), &quot;wb&quot;)) #将对象data保存到文件中去
-    <span class='k'>return</span> <span class='n'>data</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div>
-<div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<p>获取带标签的数据
-输入： 图片矩阵及其标签， 是否为训练数据
-输出： 字典
-<strong>MNIST数据包括60000训练集和10000个测试集，数据集格式为IDX，格式如下</strong></p>
-
-<pre><code> #训练数据 60000
- train-images-idx3-ubyte
- train-labels-idx1-ubyte
-
- #测试数据 10000
- t10k-images-idx3-ubyte
- t10k-labels-idx1-ubyte
-
- #格式
- magic number(4个字节)    
-     1:0x00
-     2:0x00
-     3:表明数据类型
-     4：矩阵维度
- number of images(4个字节)
- number of rows(4个字节)
- number of colums(4个字节)
- pixel</code></pre>
-
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[17]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>images</span> <span class='o'>=</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;train-images-idx3-ubyte&#39;</span><span class='p'>,</span><span class='s1'>&#39;rb&#39;</span><span class='p'>)</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))</span><span class='c1'># images.read(4)表明读出前4个字节 读出后改变原来的images</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>))</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;B&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>])</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;B&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>])</span>
-<span class='n'>x</span> <span class='o'>=</span> <span class='p'>[[</span><span class='n'>unpack</span><span class='p'>(</span><span class='s1'>&#39;&gt;B&#39;</span><span class='p'>,</span> <span class='n'>images</span><span class='o'>.</span><span class='n'>read</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>))[</span><span class='mi'>0</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>unused_col</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>28</span><span class='p'>)]</span> <span class='k'>for</span> <span class='n'>unused_row</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>28</span><span class='p'>)</span> <span class='p'>]</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>(</span><span class='n'>x</span><span class='p'>))</span>
+<span class='k'>def</span> <span class='nf'>logit</span><span class='p'>(</span><span class='n'>p</span><span class='p'>):</span>
+    <span class='k'>return</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>log</span><span class='p'>(</span><span class='n'>p</span><span class='o'>/</span><span class='p'>(</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>p</span><span class='p'>))</span>
+<span class='n'>p</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>arange</span><span class='p'>(</span><span class='mf'>1e-4</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>,</span> <span class='mf'>0.0001</span><span class='p'>)</span>
+<span class='n'>y</span> <span class='o'>=</span> <span class='n'>logit</span><span class='p'>(</span><span class='n'>p</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>plot</span><span class='p'>(</span><span class='n'>p</span><span class='p'>,</span> <span class='n'>y</span> <span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s1'>&#39;red&#39;</span><span class='p'>,</span> <span class='n'>lw</span><span class='o'>=</span><span class='mi'>2</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>axvline</span><span class='p'>(</span><span class='n'>x</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>,</span> <span class='n'>lw</span><span class='o'>=</span><span class='mi'>2</span><span class='p'>,</span> <span class='n'>label</span><span class='o'>=</span><span class='s2'>&quot;undefined&quot;</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>axvline</span><span class='p'>(</span><span class='n'>x</span><span class='o'>=</span><span class='mi'>1</span><span class='p'>,</span> <span class='n'>lw</span><span class='o'>=</span><span class='mi'>2</span><span class='p'>,</span> <span class='n'>label</span><span class='o'>=</span><span class='s2'>&quot;undefined&quot;</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>xticks</span><span class='p'>([</span><span class='n'>i</span><span class='o'>/</span><span class='mi'>100</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>125</span><span class='p'>,</span> <span class='mi'>25</span><span class='p'>)])</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>legend</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>show</span><span class='p'>()</span>
 </pre></div>
 
 </div>
@@ -12375,192 +12167,178 @@ div#notebook {
 <div class='prompt'></div>
 
 
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>b&#39;\x00\x00\x08\x03&#39;
-b&#39;\x00\x00\xea`&#39;
-b&#39;\x00\x00\x00\x1c&#39;
-b&#39;\x00\x00\x00\x1c&#39;
-0
-0
-(28, 28)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div>
-<div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<h2 id='pack()&#19982;unpack()&#20351;&#29992;'>pack()&#19982;unpack()&#20351;&#29992;</h2><p><code>struct.pack(fmt,v1,v2,...)</code>， 参数fmt是格式字符串，v1,v2表示需要转换的值。将python数据类型转换为字节流
-<code>srtuc.unpack(fmt,str)</code>,与pack()相反。</p>
-<table>
-<thead><tr>
-<th>Character</th>
-<th>Byte order</th>
-<th>Size</th>
-<th>Alignment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@(默认)</td>
-<td>本机</td>
-<td>本机</td>
-<td>本机，凑够四个字节</td>
-</tr>
-<tr>
-<td>=</td>
-<td>本机</td>
-<td>标准</td>
-<td>none，按原字节算</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小端</td>
-<td>标准</td>
-<td>none，按原字节算</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大端</td>
-<td>标准</td>
-<td>none，按原字节算</td>
-</tr>
-<tr>
-<td>！</td>
-<td>netwoek(大端）</td>
-<td>标准</td>
-<td>none，按原字节算</td>
-</tr>
-</tbody>
-</table>
-<p>大小端为对齐方式</p>
-
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[18]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>import</span> <span class='nn'>struct</span>
-<span class='nb'>str</span> <span class='o'>=</span> <span class='n'>struct</span><span class='o'>.</span><span class='n'>pack</span><span class='p'>(</span><span class='s2'>&quot;i&quot;</span><span class='p'>,</span> <span class='mi'>40</span><span class='p'>)</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>)</span> <span class='c1'>#输出的是对应的accii码</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='nb'>str</span><span class='p'>))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
 
 
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>b&#39;(\x00\x00\x00&#39;
-4
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[19]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>## 关于for in前有一个变量</span>
-<span class='n'>matrix</span> <span class='o'>=</span> <span class='p'>[</span>
-    <span class='p'>[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>4</span><span class='p'>],</span>
-    <span class='p'>[</span><span class='mi'>5</span><span class='p'>,</span><span class='mi'>6</span><span class='p'>,</span><span class='mi'>7</span><span class='p'>,</span><span class='mi'>8</span><span class='p'>],</span>
-    <span class='p'>[</span><span class='mi'>9</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>,</span><span class='mi'>11</span><span class='p'>,</span><span class='mi'>12</span><span class='p'>],</span>
-<span class='p'>]</span>
-<span class='n'>a</span><span class='o'>=</span><span class='p'>[[</span><span class='n'>row</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>matrix</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[20]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>transposed</span> <span class='o'>=</span><span class='p'>[]</span>
-<span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>):</span>
-    <span class='n'>transposed_row</span> <span class='o'>=</span> <span class='p'>[]</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;</span><span class='se'>\n</span><span class='s1'>&#39;</span><span class='p'>)</span>
-    <span class='k'>for</span> <span class='n'>cols</span> <span class='ow'>in</span> <span class='n'>matrix</span><span class='p'>:</span>
-        <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;row=</span><span class='si'>%s</span><span class='s1'>, i = </span><span class='si'>%d</span><span class='s1'>&#39;</span> <span class='o'>%</span><span class='p'>(</span><span class='n'>cols</span><span class='p'>,</span><span class='n'>i</span><span class='p'>))</span>
-        <span class='n'>transposed_row</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>cols</span><span class='p'>[</span><span class='n'>i</span><span class='p'>])</span>
-    <span class='n'>transposed</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>transposed_row</span><span class='p'>)</span>
-
-<span class='n'>transposed</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>
-
-row=[1, 2, 3, 4], i = 0
-row=[5, 6, 7, 8], i = 0
-row=[9, 10, 11, 12], i = 0
-
-
-row=[1, 2, 3, 4], i = 1
-row=[5, 6, 7, 8], i = 1
-row=[9, 10, 11, 12], i = 1
-
-
-row=[1, 2, 3, 4], i = 2
-row=[5, 6, 7, 8], i = 2
-row=[9, 10, 11, 12], i = 2
-
-
-row=[1, 2, 3, 4], i = 3
-row=[5, 6, 7, 8], i = 3
-row=[9, 10, 11, 12], i = 3
-</pre>
-</div>
-</div>
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[20]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</pre>
+<div class='output_png output_subarea '>
+<img src='data:image/png;base64,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
+'
+>
 </div>
 
 </div>
@@ -12573,58 +12351,81 @@ row=[9, 10, 11, 12], i = 3
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<p>当矩阵作为迭代器进行迭代时，迭代的是其每一行</p>
-<h1 id='------------------------------------------------------------------------------'>------------------------------------------------------------------------------</h1>
+<p><strong><strong>最大似然估计</strong></strong></p>
+<ol>
+<li>引入<strong>假设函数</strong>$h_{\theta}(X)$，设$\theta^TX$为<strong>线性回归模型</strong>:<br>
+$\theta^TX$中, $\theta$和$X$均为<strong>列向量</strong>, 例如:
+$\theta^T=
+\left[
+\begin{matrix}
+bias &amp; \theta_1 &amp; \theta_2 
+\end{matrix}
+\right]
+\quad
+X=
+\left[
+\begin{matrix}
+1  \\
+x_1  \\
+x_2 
+\end{matrix}
+\right]
+$ 求矩阵点积, 得出:<br>
+$$\theta^TX = bias * 1 + \theta_1 * x_1 + \theta_2 * x_2 = \theta_1x_1 + \theta_2x_2 + bias$$
+设$\theta^TX = z$ 则有假设函数: 
+$$h_\theta(X)=\frac{1}{1+e^{-z}}=P(Y=1 \mid X;\theta)$$
+上式代表了$Y=1$的概率;<br>
+$$P(Y=0 \mid X;\theta)=1-h_\theta(X)$$<br>
+上式代表了$Y=0$的概率, 注意$Y \in \{0, 1\}$ 非$0$即$1$</li>
+<li>回顾<strong>伯努利分布</strong>(Bernoulli distribution):<br>
+$$f(k;p)={\begin{cases}p&amp;{\text{if }}k=1,\\q=1-p&amp;{\text{if }}k=0.\end{cases}}$$
+或$f(k;p)=p^{k}(1-p)^{1-k}\quad {\text{for }}k\in \{0,1\}$ 注意$f(k;p)$表示的是$k$为$0$或$1$的概率, 也就是$P(k)$</li>
+<li>定义<strong>似然函数$(likelihood function)$</strong>:
+$${\begin{aligned}L(\theta \mid x)&amp;=P(Y\mid X;\theta )\\&amp;=\prod _{i}^{m}P(y_{i}\mid x_{i};\theta )\\&amp;=\prod _{i}^{m}h_{\theta }(x_{i})^{y_{i}}(1-h_{\theta }(x_{i}))^{(1-y_{i})}\end{aligned}}$$
+其中$i$为每个数据样本, 共有$m$个数据样本, <strong>最大似然估计</strong>的目的就是让上式的从输出值尽可能大;<br>
+对上式取$log$, 以方便计算, 因为取$log$可以把乘积转换为加法，而且不影响我们的优化目标:
+$$L(\theta \mid x) = \log(P({Y}\mid{h_{\theta }(X})) = \sum_{i=1}^{m} y_i \log(h_{\theta}({x}_i)) + (1-y_i) \log(1 - h_{\theta}({x}_i))$$
+我们只要在式子前面加一个负号,即可把求最大转换为求最小, 设$h_{\theta}(X)=\hat{Y}$, 得出损失函数$J(\theta)$, 我们只要最小化这个函数, 就能通过求导来得出我们想要的$\theta$:<br>
+$$J(\theta)=-\sum_{i}^{m}（Y log(\hat{Y}) - (1-Y) log(1-\hat{Y})）$$
+交叉熵的定义如下：<br>
+$$CrossEntropy(Y, \hat{Y})=- \frac{1}{m}\sum_{i}^{m} \sum_{c}^{N_c} Y \log (\hat{Y}) $$
+其中$c$为分类编号, $N_c$为所有的分类数量。</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p><strong> 交叉熵 </strong></p>
+<p>提到交叉熵，首先从信息量和熵说起。
+信息量通常的解释就是一件发生概率越小的事件发生所产生的信息越大，也即信息量的大小与事件发生概率成反比。
+定义如下： 
+    假设$X$是一个离散型随机变量，其取值集合为$ \chi $。概率分布函数$p(x)=Pr(X=x),x\in \chi$则定义事件$X=x_0$的信息量为：
+                                        $$I(x_0)=-log(p(x_0))$$
+    其中$p(x_0) \in[0,1]$ 下面画出信息量与事件发生概率的图像</p>
+
 </div>
 </div>
 </div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[21]:</div>
+<div class='prompt input_prompt'>In&nbsp;[4]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='k'>def</span> <span class='nf'>get_matrix_from_file</span><span class='p'>(</span><span class='n'>fileName</span><span class='p'>):</span>
-    <span class='n'>offset</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>ending</span><span class='p'>)</span> <span class='o'>+</span> <span class='mi'>4</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='n'>offset</span><span class='p'>)</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>4</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>])</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>3</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>])</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>])</span>
-<span class='c1'>#通过文件名称判断网路类型</span>
-    <span class='k'>if</span> <span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>4</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>]</span> <span class='o'>==</span> <span class='s1'>&#39;X&#39;</span><span class='p'>:</span>
-        <span class='n'>n_src</span> <span class='o'>=</span> <span class='n'>n_input</span>                
-    <span class='k'>else</span><span class='p'>:</span>
-        <span class='k'>if</span> <span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>3</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>]</span><span class='o'>==</span><span class='s1'>&#39;e&#39;</span><span class='p'>:</span>
-            <span class='n'>n_src</span> <span class='o'>=</span> <span class='n'>n_e</span>
-        <span class='k'>else</span><span class='p'>:</span>
-            <span class='n'>n_src</span> <span class='o'>=</span> <span class='n'>n_i</span>
-    <span class='k'>if</span> <span class='n'>fileName</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>offset</span><span class='p'>]</span><span class='o'>==</span><span class='s1'>&#39;e&#39;</span><span class='p'>:</span>
-        <span class='n'>n_tgt</span> <span class='o'>=</span> <span class='n'>n_e</span>
-    <span class='k'>else</span><span class='p'>:</span>
-        <span class='n'>n_tgt</span> <span class='o'>=</span> <span class='n'>n_i</span>
-    <span class='n'>readout</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>load</span><span class='p'>(</span><span class='n'>fileName</span><span class='p'>)</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;readout.shape= </span><span class='si'>%s</span><span class='s1'> ,fileName =</span><span class='si'>%s</span><span class='s1'>&#39;</span> <span class='o'>%</span><span class='p'>(</span><span class='n'>readout</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>,</span><span class='n'>fileName</span><span class='p'>))</span>
-    <span class='n'>value_arr</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>n_src</span><span class='p'>,</span> <span class='n'>n_tgt</span><span class='p'>))</span>
-    <span class='k'>if</span> <span class='ow'>not</span> <span class='n'>readout</span><span class='o'>.</span><span class='n'>shape</span> <span class='o'>==</span> <span class='p'>(</span><span class='mi'>0</span><span class='p'>,):</span>
-        <span class='n'>value_arr</span><span class='p'>[</span><span class='n'>np</span><span class='o'>.</span><span class='n'>int32</span><span class='p'>(</span><span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>0</span><span class='p'>]),</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>int32</span><span class='p'>(</span><span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>1</span><span class='p'>])]</span> <span class='o'>=</span> <span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>2</span><span class='p'>]</span> <span class='c1'>#将权重矩阵[313600,3]读出 并变为[784,400]的输入到激励层的权重</span>
-        <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;value_arr.shape=</span><span class='si'>%s</span><span class='s1'>,readout[:,0]=</span><span class='si'>%s</span><span class='s1'>,readout[:,1]=</span><span class='si'>%s</span><span class='s1'>,readout[:,2]=</span><span class='si'>%s</span><span class='s1'>&#39;</span><span class='o'>%</span><span class='p'>(</span><span class='n'>value_arr</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>,</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>int32</span><span class='p'>(</span><span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>0</span><span class='p'>]),</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>int32</span><span class='p'>(</span><span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>1</span><span class='p'>]),</span><span class='n'>readout</span><span class='p'>[:,</span><span class='mi'>2</span><span class='p'>]</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>))</span>
-    <span class='k'>return</span> <span class='n'>value_arr</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[22]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='nn'>np</span>
-
-<span class='n'>np</span><span class='o'>.</span><span class='n'>set_printoptions</span><span class='p'>(</span><span class='n'>threshold</span> <span class='o'>=</span> <span class='mi'>100</span><span class='p'>)</span>
-
-<span class='n'>get_matrix_from_file</span><span class='p'>(</span><span class='s1'>&#39;/home/begins/learn/code/brian2_demo/stdp-mnist-master/weights/XeAe.npy&#39;</span><span class='p'>)</span>
+<div class=' highlight hl-ipython3'><pre><span></span><span class='k'>def</span> <span class='nf'>logit</span><span class='p'>(</span><span class='n'>p</span><span class='p'>):</span>
+    <span class='k'>return</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>log</span><span class='p'>(</span><span class='n'>p</span><span class='p'>)</span>
+<span class='n'>p</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>arange</span><span class='p'>(</span><span class='mf'>1e-4</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>,</span> <span class='mf'>0.0001</span><span class='p'>)</span>
+<span class='n'>y</span> <span class='o'>=</span> <span class='o'>-</span><span class='n'>logit</span><span class='p'>(</span><span class='n'>p</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>plot</span><span class='p'>(</span><span class='n'>p</span><span class='p'>,</span> <span class='n'>y</span> <span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s1'>&#39;red&#39;</span><span class='p'>,</span> <span class='n'>lw</span><span class='o'>=</span><span class='mi'>2</span><span class='p'>)</span>
+<span class='c1'># plt.axvline(x=0, lw=2, label=&quot;undefined&quot;)</span>
+<span class='c1'># plt.axvline(y=0, lw=2, label=&quot;undefined&quot;)</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>xticks</span><span class='p'>([</span><span class='n'>i</span><span class='o'>/</span><span class='mi'>100</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>125</span><span class='p'>,</span> <span class='mi'>25</span><span class='p'>)])</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>legend</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='o'>.</span><span class='n'>show</span><span class='p'>()</span>
 </pre></div>
 
 </div>
@@ -12640,38 +12441,155 @@ row=[9, 10, 11, 12], i = 3
 <div class='prompt'></div>
 
 
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>4
-X
-e
-e
-readout.shape= (313600, 3) ,fileName =/home/begins/learn/code/brian2_demo/stdp-mnist-master/weights/XeAe.npy
-value_arr.shape=(784, 400),readout[:,0]=[  0   0   0 ..., 783 783 783],readout[:,1]=[  0   1   2 ..., 397 398 399],readout[:,2]=(313600,)
-</pre>
-</div>
-</div>
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[22]:</div>
 
 
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>array([[  1.21994321e-03,   1.40071448e-07,   3.99351122e-04, ...,
-          5.84867951e-06,   2.08166168e-04,   1.23351536e-05],
-       [  2.14628277e-04,   3.53171242e-07,   2.69610719e-04, ...,
-          3.04600584e-06,   1.69388303e-04,   5.97213645e-05],
-       [  1.30390539e-03,   1.50061533e-06,   3.37684125e-04, ...,
-          2.46586247e-06,   3.40640110e-04,   3.27649094e-05],
-       ..., 
-       [  1.25553212e-03,   3.91139389e-07,   4.18427550e-04, ...,
-          2.44867471e-06,   1.45915084e-04,   3.44885830e-05],
-       [  8.63707656e-04,   4.38232971e-07,   2.70738164e-04, ...,
-          7.91052717e-06,   2.20297681e-05,   7.10305219e-05],
-       [  6.62233903e-04,   6.55314059e-07,   4.23170251e-04, ...,
-          9.07555682e-06,   3.92671848e-05,   2.69670090e-05]])</pre>
+<div class='output_png output_subarea '>
+<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW4AAAD8CAYAAABXe05zAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBo
+dHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAH0xJREFUeJzt3Xt0VOW9//H3k4QkJCAoYBRQgnIV
+TAUignhaFK3+hGVbqwUrPdXaYtWfl5661K5Wj/X4a7Wrx15OrT1Iq+35US+HarVqvRXy83bAgiAK
+kYvcRO5BaC4kIeT5/fGdSQJmMjMkM3vP5PNaa9bsmdl75juP4ycPz3723s57j4iIZI6coAsQEZHk
+KLhFRDKMgltEJMMouEVEMoyCW0Qkwyi4RUQyjIJbRCTDKLhFRDKMgltEJMPkpeJN+/fv70tLS5Pe
+7r2P9wNw+qA+XVxR9qqtraW4uDjoMjKG2is5aq/kdKa9li1btsd7PyCRdVMS3KWlpSxdujT57e54
+HoCl903v6pKyVkVFBVOnTg26jIyh9kqO2is5nWkv59zmRNfVUImISIZRcIuIZBgFt4hIhknJGLeI
+ZAfnHBs3bqS+vj7oUjJCnz59qKys7HCdwsJCBg8eTI8ePY76cxTcIhJTcXExvXv3prS0FOdc0OWE
+XnV1Nb179475uveeqqoqtm7dytChQ4/6czRUIiIx5ebm0q9fP4V2F3HO0a9fv07/C0bBLSIdUmh3
+ra5oz/AMlSxcyJPzb2NL3xNB87hFRGIKT497714mbl3N2B3rg65ERLLI1KlT4x4Q+PrrrzNmzBjO
+OOMMPv74Yy677LIu+eyKigpmzJjRJe/VVniCOzcXAIcuXiwi6TV//nxuvfVWVqxYwaBBg1iwYEHQ
+JXUoPMGdY6Xk6KrzItLGpk2bGDt2bMvjn/70p9x9991MnTqV22+/nYkTJzJixAhef/11AA4cOMCs
+WbMoKytj5syZHDhwoGXbl19+mcmTJzN+/Hguv/xyampqmDdvHk8++ST33HMPV1555WGf9+ijj3Lp
+pZdy0UUXMXz4cG677bYO3wvgxRdfZNSoUZxzzjk89dRTKWmT8IxxRwbsnYJbJJSi5xLqaps6sU+r
+qamJt99+mxdeeIEf/vCHvPrqqzz00EMUFRWxcuVKVq5cyfjx4wHYs2cP9957L6+++irFxcXcf//9
+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
+kmH+P/5WO7owg5WxAAAAAElFTkSuQmCC
+'
+>
 </div>
 
 </div>
@@ -12684,670 +12602,40 @@ value_arr.shape=(784, 400),readout[:,0]=[  0   0   0 ..., 783 783 783],readout[:
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<h1 id='---------------------------------------------------------'>---------------------------------------------------------</h1>
+<p>前面已经对信息量进行了相关定义以及解释，而<strong>熵的定义就是所有信息量的期望即</strong>
+$$H(X)=\sum^{n}_{i=1}p(x_i)I(x_i)=-\sum^{n}_{i=1}p(x_i)log(p(x_i))$$
+对于一个事件只有两种结果的过程来说，也即二分类问题可以简化为
+$$H(X)=-\sum^{n}_{i=1}p(x_i)log(p(x_i))=-p(x)log(p(x))-(1-p(x))log(1-(p(x))$$</p>
+
 </div>
 </div>
 </div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[23]:</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
 <div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#保持连接和theta</span>
-<span class='k'>def</span> <span class='nf'>save_connections</span><span class='p'>(</span><span class='n'>ending</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;</span><span class='p'>):</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;save connections&#39;</span><span class='p'>)</span>
-    <span class='k'>for</span> <span class='n'>connName</span> <span class='ow'>in</span> <span class='n'>save_conns</span><span class='p'>:</span>
-        <span class='n'>connMatrix</span> <span class='o'>=</span> <span class='n'>connections</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>][:]</span>
-<span class='c1'>#         connListSparse = ([(i,j[0],j[1]) for i in xrange(connMatrix.shape[0]) for j in zip(connMatrix.rowj[i],connMatrix.rowdata[i])])</span>
-        <span class='n'>connListSparse</span> <span class='o'>=</span> <span class='p'>([(</span><span class='n'>i</span><span class='p'>,</span><span class='n'>j</span><span class='p'>,</span><span class='n'>connMatrix</span><span class='p'>[</span><span class='n'>i</span><span class='p'>,</span><span class='n'>j</span><span class='p'>])</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>connMatrix</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>])</span> <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>connMatrix</span><span class='o'>.</span><span class='n'>shape</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>])</span> <span class='p'>])</span>
-        <span class='n'>np</span><span class='o'>.</span><span class='n'>save</span><span class='p'>(</span><span class='n'>data_path</span> <span class='o'>+</span> <span class='s1'>&#39;weights/&#39;</span> <span class='o'>+</span> <span class='n'>connName</span> <span class='o'>+</span> <span class='n'>ending</span><span class='p'>,</span> <span class='n'>connListSparse</span><span class='p'>)</span>
-<span class='k'>def</span> <span class='nf'>save_theta</span><span class='p'>(</span><span class='n'>ending</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;</span><span class='p'>):</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;save theta&#39;</span><span class='p'>)</span>
-    <span class='k'>for</span> <span class='n'>pop_name</span> <span class='ow'>in</span> <span class='n'>population_names</span><span class='p'>:</span>
-        <span class='n'>np</span><span class='o'>.</span><span class='n'>save</span><span class='p'>(</span><span class='n'>data_path</span> <span class='o'>+</span> <span class='s1'>&#39;weights/theta_&#39;</span> <span class='o'>+</span> <span class='n'>pop_name</span> <span class='o'>+</span> <span class='n'>ending</span><span class='p'>,</span> <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>pop_name</span> <span class='o'>+</span> <span class='s1'>&#39;e&#39;</span><span class='p'>]</span><span class='o'>.</span><span class='n'>theta</span><span class='p'>)</span>
-<span class='c1'>#正则化权重        </span>
-<span class='k'>def</span> <span class='nf'>normalize_weights</span><span class='p'>():</span>
-    <span class='k'>for</span> <span class='n'>connName</span> <span class='ow'>in</span> <span class='n'>connections</span><span class='p'>:</span>
-        <span class='k'>if</span> <span class='n'>connName</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>]</span> <span class='o'>==</span> <span class='s1'>&#39;e&#39;</span> <span class='ow'>and</span> <span class='n'>connName</span><span class='p'>[</span><span class='mi'>3</span><span class='p'>]</span> <span class='o'>==</span> <span class='s1'>&#39;e&#39;</span><span class='p'>:</span> 
-            <span class='n'>connection</span> <span class='o'>=</span> <span class='n'>connections</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>][:]</span>
-            <span class='n'>temp_conn</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>copy</span><span class='p'>(</span><span class='n'>connection</span><span class='p'>)</span>
-            <span class='n'>colSums</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>sum</span><span class='p'>(</span><span class='n'>temp_conn</span><span class='p'>,</span> <span class='n'>axis</span> <span class='o'>=</span> <span class='mi'>0</span><span class='p'>)</span>
-            <span class='n'>colFactors</span> <span class='o'>=</span> <span class='n'>weight</span><span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span><span class='o'>/</span><span class='n'>colSums</span>
-            <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>n_e</span><span class='p'>):</span><span class='c1'>#</span>
-                <span class='n'>connection</span><span class='p'>[:,</span><span class='n'>j</span><span class='p'>]</span> <span class='o'>*=</span> <span class='n'>colFactors</span><span class='p'>[</span><span class='n'>j</span><span class='p'>]</span>
-          
-</pre></div>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p><strong>相对熵</strong>
+相对熵又称为KL散度，如果我们对于一个随机变量X有两个单独的概率分别P(X)和Q(X)，我们使用KL散度来衡量这两个概率之间的差异。
+即如果用P来描述目标问题，而不是用Q来描述目标问题，得到的信息增量。
+在机器学习中，P往往表示的是样本真实的分布，Q表示的模型预测的分布。其计算公式如下：
+$$D_{KL}(p||q)=\sum_{i=1}^{n}p(x_i)log(\frac{p(x_i)}{q(x_i)}) \\
+              =\sum_{i=1}^{n}p(x_i)log(p(x_i))-\sum_{i=1}^{n}p(x_i)log(q(x_i)) \\
+              =-H(p(x))+(-\sum_{i=1}^{n}p(x_i)log(q(x_i)))
+$$
+等式前一部分是p的熵，等式后一部分就是交叉熵：
+$$H(p,q)=-\sum_{i=1}^{n}p(x_i)log(q(x_i))$$</p>
 
 </div>
 </div>
 </div>
-
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
 </div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[24]:</div>
 <div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#获取输入的二维权重</span>
-<span class='k'>def</span> <span class='nf'>get_2d_input_weights</span><span class='p'>():</span>
-    <span class='n'>name</span> <span class='o'>=</span> <span class='s1'>&#39;XeAe&#39;</span>
-    <span class='n'>weight_matrix</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>n_input</span><span class='p'>,</span> <span class='n'>n_e</span><span class='p'>))</span>
-    <span class='n'>n_e_sqrt</span> <span class='o'>=</span> <span class='nb'>int</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>sqrt</span><span class='p'>(</span><span class='n'>n_e</span><span class='p'>))</span>
-    <span class='n'>n_in_sqrt</span> <span class='o'>=</span> <span class='nb'>int</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>sqrt</span><span class='p'>(</span><span class='n'>n_input</span><span class='p'>))</span>
-    <span class='n'>num_values_col</span> <span class='o'>=</span> <span class='n'>n_e_sqrt</span><span class='o'>*</span><span class='n'>n_in_sqrt</span>
-    <span class='n'>num_values_row</span> <span class='o'>=</span> <span class='n'>num_values_col</span>
-    <span class='n'>rearranged_weights</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>num_values_col</span><span class='p'>,</span> <span class='n'>num_values_row</span><span class='p'>))</span>
-    <span class='n'>connMatrix</span> <span class='o'>=</span> <span class='n'>connections</span><span class='p'>[</span><span class='n'>name</span><span class='p'>][:]</span>
-    <span class='n'>weight_matrix</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>copy</span><span class='p'>(</span><span class='n'>connMatrix</span><span class='p'>)</span>
-        
-    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>n_e_sqrt</span><span class='p'>):</span>
-        <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>n_e_sqrt</span><span class='p'>):</span>
-                <span class='n'>rearranged_weights</span><span class='p'>[</span><span class='n'>i</span><span class='o'>*</span><span class='n'>n_in_sqrt</span> <span class='p'>:</span> <span class='p'>(</span><span class='n'>i</span><span class='o'>+</span><span class='mi'>1</span><span class='p'>)</span><span class='o'>*</span><span class='n'>n_in_sqrt</span><span class='p'>,</span> <span class='n'>j</span><span class='o'>*</span><span class='n'>n_in_sqrt</span> <span class='p'>:</span> <span class='p'>(</span><span class='n'>j</span><span class='o'>+</span><span class='mi'>1</span><span class='p'>)</span><span class='o'>*</span><span class='n'>n_in_sqrt</span><span class='p'>]</span> <span class='o'>=</span> \
-                    <span class='n'>weight_matrix</span><span class='p'>[:,</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span><span class='o'>*</span><span class='n'>n_e_sqrt</span><span class='p'>]</span><span class='o'>.</span><span class='n'>reshape</span><span class='p'>((</span><span class='n'>n_in_sqrt</span><span class='p'>,</span> <span class='n'>n_in_sqrt</span><span class='p'>))</span>
-    <span class='k'>return</span> <span class='n'>rearranged_weights</span>
-</pre></div>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p>在线性回归问题中常用MSE作为loss函数，在分类问题熵使用交叉熵函数</p>
 
 </div>
 </div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[25]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#画出二维的输入权重</span>
-<span class='k'>def</span> <span class='nf'>plot_2d_input_weights</span><span class='p'>():</span>
-    <span class='n'>name</span> <span class='o'>=</span> <span class='s1'>&#39;XeAe&#39;</span>
-    <span class='n'>weights</span> <span class='o'>=</span> <span class='n'>get_2d_input_weights</span><span class='p'>()</span>
-    <span class='n'>fig</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>figure</span><span class='p'>(</span><span class='n'>fig_num</span><span class='p'>,</span> <span class='n'>figsize</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>18</span><span class='p'>,</span> <span class='mi'>18</span><span class='p'>))</span>
-    <span class='n'>im2</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>imshow</span><span class='p'>(</span><span class='n'>weights</span><span class='p'>,</span> <span class='n'>interpolation</span> <span class='o'>=</span> <span class='s2'>&quot;nearest&quot;</span><span class='p'>,</span> <span class='n'>vmin</span> <span class='o'>=</span> <span class='mi'>0</span><span class='p'>,</span> <span class='n'>vmax</span> <span class='o'>=</span> <span class='n'>wmax_ee</span><span class='p'>,</span> <span class='n'>cmap</span> <span class='o'>=</span> <span class='n'>cmap</span><span class='o'>.</span><span class='n'>get_cmap</span><span class='p'>(</span><span class='s1'>&#39;hot_r&#39;</span><span class='p'>))</span>
-    <span class='n'>b</span><span class='o'>.</span><span class='n'>colorbar</span><span class='p'>(</span><span class='n'>im2</span><span class='p'>)</span>
-    <span class='n'>b</span><span class='o'>.</span><span class='n'>title</span><span class='p'>(</span><span class='s1'>&#39;weights of connection&#39;</span> <span class='o'>+</span> <span class='n'>name</span><span class='p'>)</span>
-    <span class='n'>fig</span><span class='o'>.</span><span class='n'>canvas</span><span class='o'>.</span><span class='n'>draw</span><span class='p'>()</span>
-    <span class='k'>return</span> <span class='n'>im2</span><span class='p'>,</span> <span class='n'>fig</span>
-<span class='c1'>#更新二维权重</span>
-<span class='k'>def</span> <span class='nf'>update_2d_input_weights</span><span class='p'>(</span><span class='n'>im</span><span class='p'>,</span> <span class='n'>fig</span><span class='p'>):</span>
-    <span class='n'>weights</span> <span class='o'>=</span> <span class='n'>get_2d_input_weights</span><span class='p'>()</span>
-    <span class='n'>im</span><span class='o'>.</span><span class='n'>set_array</span><span class='p'>(</span><span class='n'>weights</span><span class='p'>)</span>
-    <span class='n'>fig</span><span class='o'>.</span><span class='n'>canvas</span><span class='o'>.</span><span class='n'>draw</span><span class='p'>()</span>
-    <span class='k'>return</span> <span class='n'>im</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[26]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#获取当前的表现</span>
-<span class='k'>def</span> <span class='nf'>get_current_performance</span><span class='p'>(</span><span class='n'>performance</span><span class='p'>,</span> <span class='n'>current_example_num</span><span class='p'>):</span>
-    <span class='n'>current_evaluation</span> <span class='o'>=</span> <span class='nb'>int</span><span class='p'>(</span><span class='n'>current_example_num</span><span class='o'>/</span><span class='n'>update_interval</span><span class='p'>)</span>
-    <span class='n'>start_num</span> <span class='o'>=</span> <span class='n'>current_example_num</span> <span class='o'>-</span> <span class='n'>update_interval</span>
-    <span class='n'>end_num</span> <span class='o'>=</span> <span class='n'>current_example_num</span>
-    <span class='n'>difference</span> <span class='o'>=</span> <span class='n'>outputNumbers</span><span class='p'>[</span><span class='n'>start_num</span><span class='p'>:</span><span class='n'>end_num</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>]</span> <span class='o'>-</span> <span class='n'>input_numbers</span><span class='p'>[</span><span class='n'>start_num</span><span class='p'>:</span><span class='n'>end_num</span><span class='p'>]</span>
-    <span class='n'>correct</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>where</span><span class='p'>(</span><span class='n'>difference</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>)[</span><span class='mi'>0</span><span class='p'>])</span>
-    <span class='n'>performance</span><span class='p'>[</span><span class='n'>current_evaluation</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>correct</span> <span class='o'>/</span> <span class='nb'>float</span><span class='p'>(</span><span class='n'>update_interval</span><span class='p'>)</span> <span class='o'>*</span> <span class='mi'>100</span>
-    <span class='k'>return</span> <span class='n'>performance</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[27]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#画出当前表现</span>
-<span class='k'>def</span> <span class='nf'>plot_performance</span><span class='p'>(</span><span class='n'>fig_num</span><span class='p'>):</span>
-    <span class='n'>num_evaluations</span> <span class='o'>=</span> <span class='nb'>int</span><span class='p'>(</span><span class='n'>num_examples</span><span class='o'>/</span><span class='n'>update_interval</span><span class='p'>)</span>
-    <span class='n'>time_steps</span> <span class='o'>=</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span> <span class='n'>num_evaluations</span><span class='p'>)</span>
-    <span class='n'>performance</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>(</span><span class='n'>num_evaluations</span><span class='p'>)</span>
-    <span class='n'>fig</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>figure</span><span class='p'>(</span><span class='n'>fig_num</span><span class='p'>,</span> <span class='n'>figsize</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>5</span><span class='p'>,</span> <span class='mi'>5</span><span class='p'>))</span>
-    <span class='n'>fig_num</span> <span class='o'>+=</span> <span class='mi'>1</span>
-    <span class='n'>ax</span> <span class='o'>=</span> <span class='n'>fig</span><span class='o'>.</span><span class='n'>add_subplot</span><span class='p'>(</span><span class='mi'>111</span><span class='p'>)</span>
-    <span class='n'>im2</span><span class='p'>,</span> <span class='o'>=</span> <span class='n'>ax</span><span class='o'>.</span><span class='n'>plot</span><span class='p'>(</span><span class='n'>time_steps</span><span class='p'>,</span> <span class='n'>performance</span><span class='p'>)</span> <span class='c1'>#my_cmap</span>
-    <span class='n'>b</span><span class='o'>.</span><span class='n'>ylim</span><span class='p'>(</span><span class='n'>ymax</span> <span class='o'>=</span> <span class='mi'>100</span><span class='p'>)</span>
-    <span class='n'>b</span><span class='o'>.</span><span class='n'>title</span><span class='p'>(</span><span class='s1'>&#39;Classification performance&#39;</span><span class='p'>)</span>
-    <span class='n'>fig</span><span class='o'>.</span><span class='n'>canvas</span><span class='o'>.</span><span class='n'>draw</span><span class='p'>()</span>
-    <span class='k'>return</span> <span class='n'>im2</span><span class='p'>,</span> <span class='n'>performance</span><span class='p'>,</span> <span class='n'>fig_num</span><span class='p'>,</span> <span class='n'>fig</span>
-<span class='c1'>#更新绘图</span>
-<span class='k'>def</span> <span class='nf'>update_performance_plot</span><span class='p'>(</span><span class='n'>im</span><span class='p'>,</span> <span class='n'>performance</span><span class='p'>,</span> <span class='n'>current_example_num</span><span class='p'>,</span> <span class='n'>fig</span><span class='p'>):</span>
-    <span class='n'>performance</span> <span class='o'>=</span> <span class='n'>get_current_performance</span><span class='p'>(</span><span class='n'>performance</span><span class='p'>,</span> <span class='n'>current_example_num</span><span class='p'>)</span>
-    <span class='n'>im</span><span class='o'>.</span><span class='n'>set_ydata</span><span class='p'>(</span><span class='n'>performance</span><span class='p'>)</span>
-    <span class='n'>fig</span><span class='o'>.</span><span class='n'>canvas</span><span class='o'>.</span><span class='n'>draw</span><span class='p'>()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[28]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#获取已经识的数字范围</span>
-<span class='k'>def</span> <span class='nf'>get_recognized_number_ranking</span><span class='p'>(</span><span class='n'>assignments</span><span class='p'>,</span> <span class='n'>spike_rates</span><span class='p'>):</span>
-    <span class='n'>summed_rates</span> <span class='o'>=</span> <span class='p'>[</span><span class='mi'>0</span><span class='p'>]</span> <span class='o'>*</span> <span class='mi'>10</span>
-    <span class='n'>num_assignments</span> <span class='o'>=</span> <span class='p'>[</span><span class='mi'>0</span><span class='p'>]</span> <span class='o'>*</span> <span class='mi'>10</span>
-    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>10</span><span class='p'>):</span>
-        <span class='n'>num_assignments</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>where</span><span class='p'>(</span><span class='n'>assignments</span> <span class='o'>==</span> <span class='n'>i</span><span class='p'>)[</span><span class='mi'>0</span><span class='p'>])</span>
-        <span class='k'>if</span> <span class='n'>num_assignments</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>:</span>
-            <span class='n'>summed_rates</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>sum</span><span class='p'>(</span><span class='n'>spike_rates</span><span class='p'>[</span><span class='n'>assignments</span> <span class='o'>==</span> <span class='n'>i</span><span class='p'>])</span> <span class='o'>/</span> <span class='n'>num_assignments</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span>
-    <span class='k'>return</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>argsort</span><span class='p'>(</span><span class='n'>summed_rates</span><span class='p'>)[::</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[29]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#获得新的表现</span>
-<span class='k'>def</span> <span class='nf'>get_new_assignments</span><span class='p'>(</span><span class='n'>result_monitor</span><span class='p'>,</span> <span class='n'>input_numbers</span><span class='p'>):</span>
-    <span class='n'>assignments</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>(</span><span class='n'>n_e</span><span class='p'>)</span>
-    <span class='n'>input_nums</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>asarray</span><span class='p'>(</span><span class='n'>input_numbers</span><span class='p'>)</span>
-    <span class='n'>maximum_rate</span> <span class='o'>=</span> <span class='p'>[</span><span class='mi'>0</span><span class='p'>]</span> <span class='o'>*</span> <span class='n'>n_e</span>    
-    <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>10</span><span class='p'>):</span>
-        <span class='n'>num_assignments</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>np</span><span class='o'>.</span><span class='n'>where</span><span class='p'>(</span><span class='n'>input_nums</span> <span class='o'>==</span> <span class='n'>j</span><span class='p'>)[</span><span class='mi'>0</span><span class='p'>])</span>
-        <span class='k'>if</span> <span class='n'>num_assignments</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>:</span>
-            <span class='n'>rate</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>sum</span><span class='p'>(</span><span class='n'>result_monitor</span><span class='p'>[</span><span class='n'>input_nums</span> <span class='o'>==</span> <span class='n'>j</span><span class='p'>],</span> <span class='n'>axis</span> <span class='o'>=</span> <span class='mi'>0</span><span class='p'>)</span> <span class='o'>/</span> <span class='n'>num_assignments</span>
-        <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>n_e</span><span class='p'>):</span>
-            <span class='k'>if</span> <span class='n'>rate</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>&gt;</span> <span class='n'>maximum_rate</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]:</span>
-                <span class='n'>maximum_rate</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>rate</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span>
-                <span class='n'>assignments</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>j</span>
-    <span class='k'>return</span> <span class='n'>assignments</span>
-    
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[69]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>s</span><span class='o'>=</span><span class='n'>MNIST_data_path</span><span class='o'>+</span><span class='s1'>&#39;training&#39;</span>
-<span class='n'>s</span><span class='o'>.</span><span class='n'>encode</span><span class='p'>(</span><span class='s1'>&#39;utf-8&#39;</span><span class='p'>)</span>
-<span class='nb'>type</span><span class='p'>(</span><span class='nb'>bytes</span><span class='p'>(</span><span class='n'>s</span><span class='p'>,</span><span class='n'>encoding</span> <span class='o'>=</span><span class='s1'>&#39;utf-8&#39;</span><span class='p'>))</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='n'>s</span><span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[69]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>b&#39;/home/begins/learn/code/brian2_demo/lm-snn-master/data/training&#39;</pre>
-</div>
-
-</div>
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[69]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>bytes</pre>
-</div>
-
-</div>
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>/home/begins/learn/code/brian2_demo/lm-snn-master/data/training
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[121]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#------------------------------------------------------------------------------ </span>
-<span class='c1'># load MNIST</span>
-<span class='c1'>#------------------------------------------------------------------------------</span>
-<span class='n'>start</span> <span class='o'>=</span> <span class='n'>time</span><span class='o'>.</span><span class='n'>time</span><span class='p'>()</span>
-<span class='c1'>#training_dir=bytes(MNIST_data_path+&#39;training&#39;)</span>
-<span class='n'>training</span> <span class='o'>=</span> <span class='n'>get_labeled_data</span><span class='p'>(</span><span class='nb'>bytes</span><span class='p'>(</span><span class='n'>MNIST_data_path</span><span class='o'>+</span><span class='s1'>&#39;training&#39;</span><span class='p'>,</span><span class='n'>encoding</span> <span class='o'>=</span><span class='s1'>&#39;utf-8&#39;</span><span class='p'>))</span>
-<span class='n'>end</span> <span class='o'>=</span> <span class='n'>time</span><span class='o'>.</span><span class='n'>time</span><span class='p'>()</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;time needed to load training set:&#39;</span><span class='p'>,</span> <span class='n'>end</span> <span class='o'>-</span> <span class='n'>start</span><span class='p'>)</span>
- 
-<span class='n'>start</span> <span class='o'>=</span> <span class='n'>time</span><span class='o'>.</span><span class='n'>time</span><span class='p'>()</span>
-<span class='n'>testing</span> <span class='o'>=</span> <span class='n'>get_labeled_data</span><span class='p'>(</span><span class='nb'>bytes</span><span class='p'>(</span><span class='n'>MNIST_data_path</span> <span class='o'>+</span> <span class='s1'>&#39;testing&#39;</span><span class='p'>,</span><span class='n'>encoding</span> <span class='o'>=</span><span class='s1'>&#39;utf-8&#39;</span><span class='p'>),</span> <span class='n'>bTrain</span> <span class='o'>=</span> <span class='kc'>False</span><span class='p'>)</span>
-<span class='n'>end</span> <span class='o'>=</span> <span class='n'>time</span><span class='o'>.</span><span class='n'>time</span><span class='p'>()</span>
-<span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;Time needed to load test set:&#39;</span><span class='p'>,</span> <span class='n'>end</span> <span class='o'>-</span> <span class='n'>start</span><span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>time needed to load training set: 0.0386507511138916
-Time needed to load test set: 0.002882242202758789
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[194]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#------------------------------------------------------------------------------ </span>
-<span class='c1'># set parameters and equations</span>
-<span class='c1'>#------------------------------------------------------------------------------</span>
-<span class='n'>test_mode</span> <span class='o'>=</span> <span class='kc'>False</span>
-<span class='n'>prefs</span><span class='o'>.</span><span class='n'>codegen</span><span class='o'>.</span><span class='n'>cpp</span><span class='o'>.</span><span class='n'>compiler</span> <span class='o'>=</span> <span class='s1'>&#39;gcc&#39;</span>
-<span class='n'>codegen</span><span class='o'>.</span><span class='n'>target</span> <span class='o'>=</span> <span class='s1'>&#39;auto&#39;</span>
-<span class='c1'># # b.set_global_preferences( </span>
-<span class='c1'>#                         defaultclock = b.Clock(dt=0.5*b.ms), # The default clock to use if none is provided or defined in any enclosing scope.</span>
-<span class='c1'>#                         useweave = True, # Defines whether or not functions should use inlined compiled C code where defined.</span>
-<span class='c1'>#                         gcc_options = [&#39;-ffast-math -march=native&#39;],  # Defines the compiler switches passed to the gcc compiler. </span>
-<span class='c1'>#                         #For gcc versions 4.2+ we recommend using -march=native. By default, the -ffast-math optimizations are turned on </span>
-<span class='c1'>#                         usecodegen = True,  # Whether or not to use experimental code generation support.</span>
-<span class='c1'>#                         usecodegenweave = True,  # Whether or not to use C with experimental code generation support.</span>
-<span class='c1'>#                         usecodegenstateupdate = True,  # Whether or not to use experimental code generation support on state updaters.</span>
-<span class='c1'>#                         usecodegenthreshold = False,  # Whether or not to use experimental code generation support on thresholds.</span>
-<span class='c1'>#                         usenewpropagate = True,  # Whether or not to use experimental new C propagation functions.</span>
-<span class='c1'>#                         usecstdp = True,  # Whether or not to use experimental new C STDP.</span>
-<span class='c1'>#                        ) </span>
-
-
-<span class='n'>np</span><span class='o'>.</span><span class='n'>random</span><span class='o'>.</span><span class='n'>seed</span><span class='p'>(</span><span class='mi'>715</span><span class='p'>)</span>
-<span class='n'>data_path</span> <span class='o'>=</span> <span class='s1'>&#39;/home/begins/learn/code/brian2_demo/stdp-mnist-master/&#39;</span>
-<span class='k'>if</span> <span class='n'>test_mode</span><span class='p'>:</span>
-    <span class='n'>weight_path</span> <span class='o'>=</span> <span class='n'>data_path</span> <span class='o'>+</span> <span class='s1'>&#39;weights/&#39;</span>
-    <span class='n'>num_examples</span> <span class='o'>=</span> <span class='mi'>10000</span> <span class='o'>*</span> <span class='mi'>1</span>
-    <span class='n'>use_testing_set</span> <span class='o'>=</span> <span class='kc'>True</span>
-    <span class='n'>do_plot_performance</span> <span class='o'>=</span> <span class='kc'>False</span>
-    <span class='n'>record_spikes</span> <span class='o'>=</span> <span class='kc'>True</span>
-    <span class='n'>ee_STDP_on</span> <span class='o'>=</span> <span class='kc'>False</span>
-    <span class='n'>update_interval</span> <span class='o'>=</span> <span class='n'>num_examples</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>weight_path</span> <span class='o'>=</span> <span class='n'>data_path</span> <span class='o'>+</span> <span class='s1'>&#39;random/&#39;</span>  
-    <span class='n'>num_examples</span> <span class='o'>=</span> <span class='mi'>60000</span> <span class='o'>*</span> <span class='mi'>3</span>
-    <span class='n'>use_testing_set</span> <span class='o'>=</span> <span class='kc'>False</span>
-    <span class='n'>do_plot_performance</span> <span class='o'>=</span> <span class='kc'>True</span>
-    <span class='k'>if</span> <span class='n'>num_examples</span> <span class='o'>&lt;=</span> <span class='mi'>60000</span><span class='p'>:</span>
-        <span class='n'>record_spikes</span> <span class='o'>=</span> <span class='kc'>True</span>
-    <span class='k'>else</span><span class='p'>:</span>
-        <span class='n'>record_spikes</span> <span class='o'>=</span> <span class='kc'>True</span>
-    <span class='n'>ee_STDP_on</span> <span class='o'>=</span> <span class='kc'>True</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[146]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_text output_error'>
-<pre>
-<span class='ansi-red-fg'>---------------------------------------------------------------------------</span>
-<span class='ansi-red-fg'>TypeError</span>                                 Traceback (most recent call last)
-<span class='ansi-green-fg'>&lt;ipython-input-146-bf13c11db5e8&gt;</span> in <span class='ansi-cyan-fg'>&lt;module&gt;</span>
-<span class='ansi-green-fg'>----&gt; 1</span><span class='ansi-red-fg'> </span>str<span class='ansi-blue-fg'>(</span><span class='ansi-blue-fg'>&#39;52&#39;</span><span class='ansi-blue-fg'>,</span>enconding <span class='ansi-blue-fg'>=</span><span class='ansi-blue-fg'>&#39;utf-8&#39;</span><span class='ansi-blue-fg'>)</span>
-
-<span class='ansi-red-fg'>TypeError</span>: &#39;bytes&#39; object is not callable</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[159]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>ending</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;</span>
-<span class='n'>n_input</span> <span class='o'>=</span> <span class='mi'>784</span>
-<span class='n'>n_e</span> <span class='o'>=</span> <span class='mi'>400</span>
-<span class='n'>n_i</span> <span class='o'>=</span> <span class='n'>n_e</span> 
-<span class='n'>single_example_time</span> <span class='o'>=</span>   <span class='mf'>0.35</span> <span class='o'>*</span> <span class='n'>second</span> <span class='c1'>#</span>
-<span class='n'>resting_time</span> <span class='o'>=</span> <span class='mf'>0.15</span> <span class='o'>*</span> <span class='n'>second</span>
-<span class='n'>runtime</span> <span class='o'>=</span> <span class='n'>num_examples</span> <span class='o'>*</span> <span class='p'>(</span><span class='n'>single_example_time</span> <span class='o'>+</span> <span class='n'>resting_time</span><span class='p'>)</span>
-<span class='k'>if</span> <span class='n'>num_examples</span> <span class='o'>&lt;=</span> <span class='mi'>10000</span><span class='p'>:</span>
-    <span class='n'>update_interval</span> <span class='o'>=</span> <span class='n'>num_examples</span>
-    <span class='n'>weight_update_interval</span> <span class='o'>=</span> <span class='mi'>20</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>update_interval</span> <span class='o'>=</span> <span class='mi'>10000</span>
-    <span class='n'>weight_update_interval</span> <span class='o'>=</span> <span class='mi'>100</span>
-<span class='k'>if</span> <span class='n'>num_examples</span> <span class='o'>&lt;=</span> <span class='mi'>60000</span><span class='p'>:</span>
-    <span class='n'>save_connections_interval</span> <span class='o'>=</span> <span class='mi'>10000</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>save_connections_interval</span> <span class='o'>=</span> <span class='mi'>10000</span>
-    <span class='n'>update_interval</span> <span class='o'>=</span> <span class='mi'>10000</span>
-
-<span class='n'>v_rest_e</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>65.</span> <span class='o'>*</span> <span class='n'>mV</span> 
-<span class='n'>v_rest_i</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>60.</span> <span class='o'>*</span> <span class='n'>mV</span> 
-<span class='n'>v_reset_e</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>65.</span> <span class='o'>*</span> <span class='n'>mV</span>
-<span class='n'>v_reset_i</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>45.</span> <span class='o'>*</span> <span class='n'>mV</span>
-<span class='n'>v_thresh_e</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>52.</span> <span class='o'>*</span> <span class='n'>mV</span>
-<span class='n'>v_thresh_i</span> <span class='o'>=</span> <span class='o'>-</span><span class='mf'>40.</span> <span class='o'>*</span> <span class='n'>mV</span>
-<span class='n'>refrac_e</span> <span class='o'>=</span> <span class='mf'>5.</span> <span class='o'>*</span> <span class='n'>ms</span>
-<span class='n'>refrac_i</span> <span class='o'>=</span> <span class='mf'>2.</span> <span class='o'>*</span> <span class='n'>ms</span>
-
-<span class='c1'>#conn_structure = &#39;dense&#39;</span>
-<span class='n'>weight</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>delay</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>input_population_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;X&#39;</span><span class='p'>]</span>
-<span class='n'>population_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;A&#39;</span><span class='p'>]</span>
-<span class='n'>input_connection_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;XA&#39;</span><span class='p'>]</span>
-<span class='n'>save_conns</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;XeAe&#39;</span><span class='p'>]</span>
-<span class='n'>input_conn_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> 
-<span class='n'>recurrent_conn_names</span> <span class='o'>=</span> <span class='p'>[</span><span class='s1'>&#39;ei&#39;</span><span class='p'>,</span> <span class='s1'>&#39;ie&#39;</span><span class='p'>]</span>
-<span class='n'>weight</span><span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='mi'>78</span>
-<span class='n'>delay</span><span class='p'>[</span><span class='s1'>&#39;ee_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>0</span><span class='o'>*</span><span class='n'>ms</span><span class='p'>,</span><span class='mi'>10</span><span class='o'>*</span><span class='n'>ms</span><span class='p'>)</span>
-<span class='n'>delay</span><span class='p'>[</span><span class='s1'>&#39;ei_input&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='p'>(</span><span class='mi'>0</span><span class='o'>*</span><span class='n'>ms</span><span class='p'>,</span><span class='mi'>5</span><span class='o'>*</span><span class='n'>ms</span><span class='p'>)</span>
-<span class='n'>input_intensity</span> <span class='o'>=</span> <span class='mf'>2.</span>
-<span class='n'>start_input_intensity</span> <span class='o'>=</span> <span class='n'>input_intensity</span>
-
-<span class='n'>tc_pre_ee</span> <span class='o'>=</span> <span class='mi'>20</span><span class='o'>*</span><span class='n'>ms</span>
-<span class='n'>tc_post_1_ee</span> <span class='o'>=</span> <span class='mi'>20</span><span class='o'>*</span><span class='n'>ms</span>
-<span class='n'>tc_post_2_ee</span> <span class='o'>=</span> <span class='mi'>40</span><span class='o'>*</span><span class='n'>ms</span>
-<span class='n'>nu_ee_pre</span> <span class='o'>=</span>  <span class='mf'>0.0001</span>      <span class='c1'># learning rate</span>
-<span class='n'>nu_ee_post</span> <span class='o'>=</span> <span class='mf'>0.01</span>       <span class='c1'># learning rate</span>
-<span class='n'>wmax_ee</span> <span class='o'>=</span> <span class='mf'>1.0</span>
-<span class='n'>exp_ee_pre</span> <span class='o'>=</span> <span class='mf'>0.2</span>
-<span class='n'>exp_ee_post</span> <span class='o'>=</span> <span class='n'>exp_ee_pre</span>
-<span class='n'>STDP_offset</span> <span class='o'>=</span> <span class='mf'>0.4</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[176]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='k'>if</span> <span class='n'>test_mode</span><span class='p'>:</span>
-    <span class='n'>scr_e</span> <span class='o'>=</span> <span class='s1'>&#39;v = v_reset_e; timer = 0*ms&#39;</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>tc_theta</span> <span class='o'>=</span> <span class='mf'>1e7</span> <span class='o'>*</span> <span class='n'>ms</span>
-    <span class='n'>theta_plus_e</span> <span class='o'>=</span> <span class='mf'>0.05</span> <span class='o'>*</span> <span class='n'>mV</span>
-    <span class='n'>scr_e</span> <span class='o'>=</span> <span class='s1'>&#39;v = v_reset_e; theta += theta_plus_e; timer = 0*ms&#39;</span>
-<span class='n'>offset</span> <span class='o'>=</span> <span class='mf'>20.0</span><span class='o'>*</span><span class='n'>mV</span>
-<span class='n'>v_thresh_e</span> <span class='o'>=</span> <span class='s1'>&#39;(v&gt;(theta - offset + -52*mv &#39;</span> <span class='o'>+</span> <span class='s1'>&#39;)) * (timer&gt;refrac_e)&#39;</span>
-
-
-<span class='n'>neuron_eqs_e</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;&#39;</span>
-<span class='s1'>        dv/dt = ((v_rest_e - v) + (I_synE+I_synI) / nS) / (100*ms)  : volt</span>
-<span class='s1'>        I_synE = ge * nS *         -v                           : amp</span>
-<span class='s1'>        I_synI = gi * nS * (-100.*mV-v)                          : amp</span>
-<span class='s1'>        dge/dt = -ge/(1.0*ms)                                   : 1</span>
-<span class='s1'>        dgi/dt = -gi/(2.0*ms)                                  : 1</span>
-<span class='s1'>        &#39;&#39;&#39;</span>
-<span class='k'>if</span> <span class='n'>test_mode</span><span class='p'>:</span>
-    <span class='n'>neuron_eqs_e</span> <span class='o'>+=</span> <span class='s1'>&#39;</span><span class='se'>\n</span><span class='s1'>  theta      :volt&#39;</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>neuron_eqs_e</span> <span class='o'>+=</span> <span class='s1'>&#39;</span><span class='se'>\n</span><span class='s1'>  dtheta/dt = -theta / (tc_theta)  : volt&#39;</span>
-<span class='n'>neuron_eqs_e</span> <span class='o'>+=</span> <span class='s1'>&#39;</span><span class='se'>\n</span><span class='s1'>  dtimer/dt = 0.1  : second&#39;</span>
-
-<span class='n'>neuron_eqs_i</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;&#39;</span>
-<span class='s1'>        dv/dt = ((v_rest_i - v) + (I_synE+I_synI) / nS) / (10*ms)  : volt</span>
-<span class='s1'>        I_synE = ge * nS *         -v                           : amp</span>
-<span class='s1'>        I_synI = gi * nS * (-85.*mV-v)                          : amp</span>
-<span class='s1'>        dge/dt = -ge/(1.0*ms)                                   : 1</span>
-<span class='s1'>        dgi/dt = -gi/(2.0*ms)                                  : 1</span>
-<span class='s1'>        &#39;&#39;&#39;</span>
-<span class='n'>eqs_stdp_ee</span> <span class='o'>=</span> <span class='s1'>&#39;&#39;&#39;</span>
-<span class='s1'>                post2before                            : 1.0</span>
-<span class='s1'>                dpre/dt   =   -pre/(tc_pre_ee)         : 1.0</span>
-<span class='s1'>                dpost1/dt  = -post1/(tc_post_1_ee)     : 1.0</span>
-<span class='s1'>                dpost2/dt  = -post2/(tc_post_2_ee)     : 1.0</span>
-<span class='s1'>            &#39;&#39;&#39;</span>
-<span class='n'>eqs_stdp_pre_ee</span> <span class='o'>=</span> <span class='s1'>&#39;pre = 1.; w -= nu_ee_pre * post1&#39;</span>
-<span class='n'>eqs_stdp_post_ee</span> <span class='o'>=</span> <span class='s1'>&#39;post2before = post2; w += nu_ee_post * pre * post2before; post1 = 1.; post2 = 1.&#39;</span>
-    
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[178]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>fig_num</span> <span class='o'>=</span> <span class='mi'>1</span>
-<span class='n'>neuron_groups</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>input_groups</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>connections</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>stdp_methods</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>rate_monitors</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>spike_monitors</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>spike_counters</span> <span class='o'>=</span> <span class='p'>{}</span>
-<span class='n'>result_monitor</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>zeros</span><span class='p'>((</span><span class='n'>update_interval</span><span class='p'>,</span><span class='n'>n_e</span><span class='p'>))</span>
-
-<span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>NeuronGroup</span><span class='p'>(</span><span class='n'>n_e</span><span class='o'>*</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>population_names</span><span class='p'>),</span> 
-                                   <span class='n'>neuron_eqs_e</span><span class='p'>,</span> 
-                                   <span class='n'>threshold</span><span class='o'>=</span> <span class='n'>v_thresh_e</span><span class='p'>,</span> 
-                                   <span class='n'>refractory</span><span class='o'>=</span> <span class='n'>refrac_e</span><span class='p'>,</span> 
-                                   <span class='n'>reset</span><span class='o'>=</span> <span class='n'>scr_e</span>
-                                  <span class='p'>)</span>
-<span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;i&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>NeuronGroup</span><span class='p'>(</span><span class='n'>n_i</span><span class='o'>*</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>population_names</span><span class='p'>),</span> 
-                                   <span class='n'>neuron_eqs_i</span><span class='p'>,</span> 
-                                   <span class='n'>threshold</span><span class='o'>=</span> <span class='n'>v_thresh_i</span><span class='p'>,</span> 
-                                   <span class='n'>refractory</span><span class='o'>=</span> <span class='n'>refrac_i</span><span class='p'>,</span> 
-                                   <span class='n'>reset</span><span class='o'>=</span> <span class='n'>v_reset_i</span> 
-                                   <span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[190]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='n'>n_e</span><span class='o'>*</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>population_names</span><span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[190]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>400</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[197]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span></span><span class='c1'>#------------------------------------------------------------------------------ </span>
-<span class='c1'># create network population and recurrent connections</span>
-<span class='c1'>#------------------------------------------------------------------------------ </span>
-<span class='k'>for</span> <span class='n'>name</span> <span class='ow'>in</span> <span class='n'>population_names</span><span class='p'>:</span>
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;create neuron group&#39;</span><span class='p'>,</span> <span class='n'>name</span><span class='p'>)</span>
-    
-    <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;e&#39;</span><span class='p'>][:</span><span class='n'>n_e</span><span class='p'>]</span>
-    <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;i&#39;</span><span class='p'>][:</span><span class='n'>n_i</span><span class='p'>]</span>
-    
-    <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span><span class='o'>.</span><span class='n'>v</span> <span class='o'>=</span> <span class='n'>v_rest_e</span> <span class='o'>-</span> <span class='mf'>40.</span> <span class='o'>*</span> <span class='n'>mV</span>
-    <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>]</span><span class='o'>.</span><span class='n'>v</span> <span class='o'>=</span> <span class='n'>v_rest_i</span> <span class='o'>-</span> <span class='mf'>40.</span> <span class='o'>*</span> <span class='n'>mV</span>
-    <span class='k'>if</span> <span class='n'>test_mode</span> <span class='ow'>or</span> <span class='n'>weight_path</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>8</span><span class='p'>:]</span> <span class='o'>==</span> <span class='s1'>&#39;weights/&#39;</span><span class='p'>:</span>
-        <span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span><span class='o'>.</span><span class='n'>theta</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>load</span><span class='p'>(</span><span class='n'>weight_path</span>  <span class='o'>+</span> <span class='n'>name</span> <span class='o'>+</span> <span class='n'>ending</span> <span class='o'>+</span> <span class='s1'>&#39;.npy&#39;</span><span class='p'>)</span>
-    <span class='k'>else</span><span class='p'>:</span>
-        <span class='n'>neuron_groups</span><span class='p'>[</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span><span class='o'>.</span><span class='n'>theta</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>ones</span><span class='p'>((</span><span class='n'>n_e</span><span class='p'>))</span> <span class='o'>*</span> <span class='mf'>20.0</span><span class='o'>*</span><span class='n'>mV</span>
-    
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;create recurrent connections&#39;</span><span class='p'>)</span>
-    <span class='k'>for</span> <span class='n'>conn_type</span> <span class='ow'>in</span> <span class='n'>recurrent_conn_names</span><span class='p'>:</span>
-        <span class='n'>connName</span> <span class='o'>=</span> <span class='n'>name</span><span class='o'>+</span><span class='n'>conn_type</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>]</span><span class='o'>+</span><span class='n'>name</span><span class='o'>+</span><span class='n'>conn_type</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>]</span>
-        <span class='n'>weightMatrix</span> <span class='o'>=</span> <span class='n'>get_matrix_from_file</span><span class='p'>(</span><span class='n'>weight_path</span> <span class='o'>+</span> <span class='n'>connName</span> <span class='o'>+</span> <span class='n'>ending</span> <span class='o'>+</span> <span class='s1'>&#39;.npy&#39;</span><span class='p'>)</span>
-        <span class='n'>connections</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>synapses</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>:</span><span class='mi'>2</span><span class='p'>]],</span> 
-                                           <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>[</span><span class='mi'>2</span><span class='p'>:</span><span class='mi'>4</span><span class='p'>]],</span>
-                                           <span class='n'>on_pre</span>
-                                           <span class='p'>)</span>
-        <span class='n'>connections</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>]</span><span class='o'>.</span><span class='n'>connect</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>:</span><span class='mi'>2</span><span class='p'>]],</span> <span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>connName</span><span class='p'>[</span><span class='mi'>2</span><span class='p'>:</span><span class='mi'>4</span><span class='p'>]],</span> <span class='n'>weightMatrix</span><span class='p'>)</span>
-                
-    <span class='k'>if</span> <span class='n'>ee_STDP_on</span><span class='p'>:</span>
-        <span class='k'>if</span> <span class='s1'>&#39;ee&#39;</span> <span class='ow'>in</span> <span class='n'>recurrent_conn_names</span><span class='p'>:</span>
-            <span class='n'>stdp_methods</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='o'>+</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>STDP</span><span class='p'>(</span><span class='n'>connections</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='o'>+</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>],</span> <span class='n'>eqs</span><span class='o'>=</span><span class='n'>eqs_stdp_ee</span><span class='p'>,</span> <span class='n'>pre</span> <span class='o'>=</span> <span class='n'>eqs_stdp_pre_ee</span><span class='p'>,</span> 
-                                                           <span class='n'>post</span> <span class='o'>=</span> <span class='n'>eqs_stdp_post_ee</span><span class='p'>,</span> <span class='n'>wmin</span><span class='o'>=</span><span class='mf'>0.</span><span class='p'>,</span> <span class='n'>wmax</span><span class='o'>=</span> <span class='n'>wmax_ee</span><span class='p'>)</span>
-
-    <span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;create monitors for&#39;</span><span class='p'>,</span> <span class='n'>name</span><span class='p'>)</span>
-    <span class='n'>rate_monitors</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>PopulationRateMonitor</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>],</span> <span class='nb'>bin</span> <span class='o'>=</span> <span class='p'>(</span><span class='n'>single_example_time</span><span class='o'>+</span><span class='n'>resting_time</span><span class='p'>)</span><span class='o'>/</span><span class='n'>b</span><span class='o'>.</span><span class='n'>second</span><span class='p'>)</span>
-    <span class='n'>rate_monitors</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>PopulationRateMonitor</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>],</span> <span class='nb'>bin</span> <span class='o'>=</span> <span class='p'>(</span><span class='n'>single_example_time</span><span class='o'>+</span><span class='n'>resting_time</span><span class='p'>)</span><span class='o'>/</span><span class='n'>b</span><span class='o'>.</span><span class='n'>second</span><span class='p'>)</span>
-    <span class='n'>spike_counters</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>SpikeCounter</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>])</span>
-    
-    <span class='k'>if</span> <span class='n'>record_spikes</span><span class='p'>:</span>
-        <span class='n'>spike_monitors</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>SpikeMonitor</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;e&#39;</span><span class='p'>])</span>
-        <span class='n'>spike_monitors</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>SpikeMonitor</span><span class='p'>(</span><span class='n'>neuron_groups</span><span class='p'>[</span><span class='n'>name</span><span class='o'>+</span><span class='s1'>&#39;i&#39;</span><span class='p'>])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>create neuron group A
-create recurrent connections
-4
-A
-e
-i
-readout.shape= (400, 3) ,fileName =/home/begins/learn/code/brian2_demo/stdp-mnist-master/random/AeAi.npy
-value_arr.shape=(400, 400),readout[:,0]=[  0   1   2 ..., 397 398 399],readout[:,1]=[  0   1   2 ..., 397 398 399],readout[:,2]=(400,)
-</pre>
-</div>
-</div>
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_text output_error'>
-<pre>
-<span class='ansi-red-fg'>---------------------------------------------------------------------------</span>
-<span class='ansi-red-fg'>TypeError</span>                                 Traceback (most recent call last)
-<span class='ansi-green-fg'>&lt;ipython-input-197-04395865b8e7&gt;</span> in <span class='ansi-cyan-fg'>&lt;module&gt;</span>
-<span class='ansi-green-intense-fg ansi-bold'>     20</span>         weightMatrix <span class='ansi-blue-fg'>=</span> get_matrix_from_file<span class='ansi-blue-fg'>(</span>weight_path <span class='ansi-blue-fg'>+</span> connName <span class='ansi-blue-fg'>+</span> ending <span class='ansi-blue-fg'>+</span> <span class='ansi-blue-fg'>&#39;.npy&#39;</span><span class='ansi-blue-fg'>)</span>
-<span class='ansi-green-intense-fg ansi-bold'>     21</span>         connections[connName] = b.synapses(neuron_groups[connName[0:2]], neuron_groups[connName[2:4]], structure= conn_structure, 
-<span class='ansi-green-fg'>---&gt; 22</span><span class='ansi-red-fg'>                                                     state = &#39;g&#39;+conn_type[0])
-</span><span class='ansi-green-intense-fg ansi-bold'>     23</span>         connections<span class='ansi-blue-fg'>[</span>connName<span class='ansi-blue-fg'>]</span><span class='ansi-blue-fg'>.</span>connect<span class='ansi-blue-fg'>(</span>neuron_groups<span class='ansi-blue-fg'>[</span>connName<span class='ansi-blue-fg'>[</span><span class='ansi-cyan-fg'>0</span><span class='ansi-blue-fg'>:</span><span class='ansi-cyan-fg'>2</span><span class='ansi-blue-fg'>]</span><span class='ansi-blue-fg'>]</span><span class='ansi-blue-fg'>,</span> neuron_groups<span class='ansi-blue-fg'>[</span>connName<span class='ansi-blue-fg'>[</span><span class='ansi-cyan-fg'>2</span><span class='ansi-blue-fg'>:</span><span class='ansi-cyan-fg'>4</span><span class='ansi-blue-fg'>]</span><span class='ansi-blue-fg'>]</span><span class='ansi-blue-fg'>,</span> weightMatrix<span class='ansi-blue-fg'>)</span>
-<span class='ansi-green-intense-fg ansi-bold'>     24</span> 
-
-<span class='ansi-red-fg'>TypeError</span>: &#39;module&#39; object is not callable</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     </div>
   </div>
@@ -13386,7 +12674,7 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
       
         <div class="post-tags">
           
-            <a href="/tags/code/" rel="tag"># code</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -13399,8 +12687,8 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/27/for-me/" rel="next" title="for me">
-                <i class="fa fa-chevron-left"></i> for me
+              <a href="/2019/03/05/最近/" rel="next" title="最近">
+                <i class="fa fa-chevron-left"></i> 最近
               </a>
             
           </div>
@@ -13408,10 +12696,6 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/05/最近/" rel="prev" title="最近">
-                最近 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
